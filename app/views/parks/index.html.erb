@@ -1,0 +1,10 @@
+<h1> Parks </h1>
+<ul>
+  <% @parks.each do |park| %>
+    <li>
+      <%= park.name %>,
+      <%= park.city %>,
+      <%= park.state %>
+    </li>
+  <% end %>
+</ul>
