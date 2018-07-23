@@ -2,4 +2,8 @@
 
 # README
 
-More information to be added later...
+
+Ruby version - 2.3.3
+Name of Project - Parks (TBD)
+Description - A app that reviews, categorizes, and displays parks.
+Authors - Rachel Cooke, Andrew McLellan, Matthew Clarke, Roxanne Cojocariu
