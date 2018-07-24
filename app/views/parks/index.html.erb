@@ -2,8 +2,8 @@
 <ul>
   <% @parks.each do |park| %>
     <li>
-      <%= park.name %>,
-      <%= park.city %>,
+      <%= link_to park.name, park_path(park)  %> <br>
+      <%= park.city %> <br>
       <%= park.state %>
     </li>
   <% end %>
