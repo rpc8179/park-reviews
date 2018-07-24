@@ -41,12 +41,12 @@ class ParkShowContainer extends Component {
   render() {
     return(
       <div>
-        {this.state.parkName}
-        {this.state.parkAddress}
-        {this.state.parkCity}
-        {this.state.parkState}
-        {this.state.parkZip}
-        {this.state.parkDescription}
+        {this.state.parkName}<br />
+        {this.state.parkAddress}<br />
+        {this.state.parkCity}<br />
+        {this.state.parkState}<br />
+        {this.state.parkZip}<br />
+        {this.state.parkDescription}<br />
 
       </div>
     )
