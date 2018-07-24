@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Api::V1::ParksController, type: :controller do
-  let!(:first_park) { Park.create(
+  let!(:first_park) { Park.create!(
     name: "Boston Common",
     address: "167 Tremont Street",
     city: "Boston",

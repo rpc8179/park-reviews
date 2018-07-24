@@ -4,12 +4,14 @@ class ParkShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      parkName: '',
-      parkAddress: '',
-      parkCity: '',
-      parkState: '',
-      parkZip: '',
-      parkDescription: ''
+      park: {
+        Name: '',
+        Address: '',
+        City: '',
+        State: '',
+        Zip: '',
+        Description: ''
+      }
     }
   }
 
@@ -27,12 +29,7 @@ class ParkShowContainer extends Component {
     .then(response => response.json())
     .then(response => {
       this.setState({
-        parkName: response.park.name,
-        parkAddress: response.park.address,
-        parkCity: response.park.city,
-        parkState: response.park.state,
-        parkZip: response.park.zip,
-        parkDescription: response.park.description
+        park: response.park
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -41,12 +38,12 @@ class ParkShowContainer extends Component {
   render() {
     return(
       <div>
-        {this.state.parkName}<br />
-        {this.state.parkAddress}<br />
-        {this.state.parkCity}<br />
-        {this.state.parkState}<br />
-        {this.state.parkZip}<br />
-        {this.state.parkDescription}<br />
+        {this.state.park.name}<br />
+        {this.state.park.address}<br />
+        {this.state.park.city}<br />
+        {this.state.park.state}<br />
+        {this.state.park.zip}<br />
+        {this.state.park.description}<br />
 
       </div>
     )

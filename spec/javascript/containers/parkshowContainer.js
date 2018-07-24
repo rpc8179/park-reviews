@@ -30,16 +30,46 @@ describe('ParkShowContainer', () => {
 
   describe('show page', () => {
     it('should contain park name', (done) => {
+     setTimeout(() => {
+       expect(wrapper.text()).toMatch('Boston Common')
+       done()
+      }, 0)
+    })
+
+    it('should contain an address', (done) => {
+     setTimeout(() => {
+       expect(wrapper.text()).toMatch('167 Tremont Street')
+      done()
+      }, 0)
+    })
+
+    it('should contain a city', (done) => {
+       setTimeout(() => {
+         expect(wrapper.text()).toMatch('Boston')
+         done()
+       }, 0)
+     })
+
+
+   it('should contain park state', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch('Boston Common')
-        expect(wrapper.text()).toMatch('167 Tremont Street')
-        expect(wrapper.text()).toMatch('Boston')
         expect(wrapper.text()).toMatch('MA')
+        done()
+      }, 0)
+    })
+
+   it('should contain park zip', (done) => {
+      setTimeout(() => {
         expect(wrapper.text()).toMatch('02134')
+        done()
+      }, 0)
+    })
+
+   it('should contain park description', (done) => {
+      setTimeout(() => {
         expect(wrapper.text()).toMatch('Has a great grass field and lots of people yelling and running around.')
         done()
       }, 0)
     })
   })
-
 })
