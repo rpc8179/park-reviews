@@ -9,7 +9,6 @@ RSpec.describe Api::V1::ParksController, type: :controller do
     zip: "02134",
     description: "Has a great grass field and lots of people yelling and running around.")
   }
-
   describe "GET#show" do
     it "should return the information of the park in api format." do
       get :show, params: {id: first_park.id}
@@ -26,9 +25,5 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(returned_json["park"]["zip"]).to eq "02134"
       expect(returned_json["park"]["description"]).to eq "Has a great grass field and lots of people yelling and running around."
     end
-
-
   end
-
-
 end
