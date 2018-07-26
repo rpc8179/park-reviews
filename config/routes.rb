@@ -2,12 +2,16 @@ Rails.application.routes.draw do
   root 'parks#index'
   devise_for :users
 
-  # get "/parks/new", to: 'parks#index'
-  resources :parks, only: [:index, :show, :new, :create]
+
+  resources :parks, only: [:index, :show, :new, :create] do
+    resources :reviews, only: [:index]
+  end
 
   namespace :api do
     namespace :v1 do
-      resources :parks, only: [:index, :show, :new, :create]
+      resources :parks, only: [:index, :show, :new, :create] do
+        resources :reviews
+      end
     end
   end
 end

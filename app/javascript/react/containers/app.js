@@ -1,7 +1,9 @@
 import React from 'react';
 import { Route, IndexRoute, Router, browserHistory } from 'react-router';
-import ParkShowContainer from './ParkShowContainer'
+
 import ParkFormContainer from './ParkFormContainer'
+import ParkShowContainer from './ParkShowContainer'
+import ParkContainer from './ParkContainer'
 
 
 const App = (props) => {
@@ -11,7 +13,7 @@ const App = (props) => {
         <Route path='/'>
             <Route path='/parks' />
             <Route path='/parks/new' component={ParkFormContainer} />
-            <Route path='/parks/:id' component={ParkShowContainer} />
+            <Route path='/parks/:id' component={ParkContainer} />
         </Route>
       </Router>
     </div>
