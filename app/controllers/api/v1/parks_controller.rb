@@ -17,7 +17,7 @@ class Api::V1::ParksController < ApplicationController
             # react router push for redirect
         else
             render json: { park: {}, error: park.errors.full_messages }
-            
+
 
             # @failure = park.errors.full_messages.to_sentence
         end

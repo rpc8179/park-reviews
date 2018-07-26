@@ -7,9 +7,4 @@ class ParksController < ApplicationController
     @park = Park.find(params[:id])
   end
 
-  
-
-
-
-
 end

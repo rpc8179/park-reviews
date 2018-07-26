@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.belongs_to :park, null: false
 
       t.integer :rating, null: false
-      t.text :body
+      t.text :body, null: false
 
       t.timestamps null: false
     end
