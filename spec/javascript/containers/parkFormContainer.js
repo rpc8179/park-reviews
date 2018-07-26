@@ -77,25 +77,6 @@ let addPark;
         })
     })
 
-    // getAllParks(){
-    //     fetch('api/v1/parks') {
-    //         .then(response => {
-    //             if(response.ok) {
-    //                 return response
-    //             } else {
-    //                 let errorMessage= `${response.status} (${response.statusText})`,
-    //                 error = new Error(errorMessage)
-    //                 throw(error)
-    //             }
-    //         })
-    //         .then(response => response.json())
-    //         .then(body => {
-    //             numParks = body.length
-    //         })
-    //         .catch(error => console.error(`Error in fetch: ${error.message}`))
-    //     }
-    // }
-
     it('successfully adds to the list when a valid park is supplied', () => {
             fetchMock.post('/api/v1/parks', {
                 status: 201,
