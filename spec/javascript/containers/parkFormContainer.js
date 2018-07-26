@@ -96,15 +96,12 @@ let addPark;
     //     }
     // }
 
-    it('successfully adds to the list when a valid park is supplied', (done) => {
-        fetchMock.post('/api/v1/parks', {
-            status: 201,
-            body: addPark
-        });
-        // setTimeout(() => {
-        //     expect(wrapper.text()).toMatch('Submitted Successfully')
-        //     done()
-        // }, 0)
+    it('successfully adds to the list when a valid park is supplied', () => {
+            fetchMock.post('/api/v1/parks', {
+                status: 201,
+                body: addPark,
+            })
+
     })
 
 })
