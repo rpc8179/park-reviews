@@ -20,7 +20,6 @@ let addPark;
 
     wrapper = mount(<ParkFormContainer />)
 
-
     describe('form page', () => {
         it('should contain park name', (done) => {
             setTimeout(() => {
@@ -63,12 +62,14 @@ let addPark;
                 done()
             }, 0)
         })
+
         it('should contain submit button', (done) => {
             setTimeout(() => {
                 expect(wrapper.text()).toMatch('Submit Park')
                 done()
             }, 0)
         })
+
         it('should contain clear form button', (done) => {
             setTimeout(() => {
                 expect(wrapper.text()).toMatch('Clear Form')
@@ -78,11 +79,9 @@ let addPark;
     })
 
     it('successfully adds to the list when a valid park is supplied', () => {
-            fetchMock.post('/api/v1/parks', {
-                status: 201,
-                body: addPark,
-            })
-
+        fetchMock.post('/api/v1/parks', {
+            status: 201,
+            body: addPark,
+        })
     })
-
 })
