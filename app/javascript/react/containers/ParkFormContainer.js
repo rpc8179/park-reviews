@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { browserHistory, Router } from 'react-router'
 
-import { browserHistory } from 'react-router'
+
 
 
 
@@ -15,7 +16,8 @@ class ParkFormContainer extends Component {
             parkZip: '',
             parkDescriptions: '',
             newPark: {},
-            errors: []
+            errors: [],
+            works: ''
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
@@ -26,6 +28,7 @@ class ParkFormContainer extends Component {
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
         this.handleFormClear = this.handleFormClear.bind(this)
+
     }
 
     handleNameChange(event) {
@@ -52,6 +55,13 @@ class ParkFormContainer extends Component {
         this.setState({parkDescription: event.target.value})
     }
 
+    // handleClick(event){
+    //     setTimeout(5)
+    //     if (this.state.works == true) {
+    //         browserHistory.push('/parks')
+    //     }
+    // }
+
     handleFormClear(event) {
         this.setState({
             parkName: '',
@@ -60,7 +70,8 @@ class ParkFormContainer extends Component {
             parkState: '',
             parkZip: '',
             parkDescription: '',
-            errors: []
+            errors: [],
+            works: ''
         })
     }
 
@@ -92,10 +103,13 @@ class ParkFormContainer extends Component {
         })
         .then(response => response.json())
         .then(body => {
-            debugger;
+
             this.setState({
                 newPark: body.park,
-                errors: body.error})
+                errors: body.error,
+                works: body.works
+            })
+
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`))
     }
@@ -104,9 +118,10 @@ class ParkFormContainer extends Component {
 
         return(
             <div>
-                <div>
-                    {this.state.errors.join(', ')}
-                </div>
+                <h1>Add A New Park!</h1>
+                {this.state.errors}
+                {this.state.works}
+
 
                 <form className='newParkForm'>
                     <div className='row'>
@@ -144,9 +159,11 @@ class ParkFormContainer extends Component {
 
                     </div>
 
-                    <div className='row'>
-                        <button className="button" onClick={this.handleFormSubmit}>Submit Park</button>
+                    <div>
+                        <div className='row'>
+                            <button className="button" onClick={this.handleFormSubmit}>Submit Park</button>
 
+                        </div>
                     </div>
                 </form>
             </div>
