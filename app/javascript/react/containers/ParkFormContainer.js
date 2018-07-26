@@ -1,8 +1,4 @@
 import React, { Component } from 'react'
-import { browserHistory, Router } from 'react-router'
-
-
-
 
 
 class ParkFormContainer extends Component {
@@ -55,13 +51,6 @@ class ParkFormContainer extends Component {
         this.setState({parkDescription: event.target.value})
     }
 
-    // handleClick(event){
-    //     setTimeout(5)
-    //     if (this.state.works == true) {
-    //         browserHistory.push('/parks')
-    //     }
-    // }
-
     handleFormClear(event) {
         this.setState({
             parkName: '',
@@ -103,13 +92,11 @@ class ParkFormContainer extends Component {
         })
         .then(response => response.json())
         .then(body => {
-
             this.setState({
                 newPark: body.park,
                 errors: body.error,
                 works: body.works
             })
-
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`))
     }

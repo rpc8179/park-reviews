@@ -101,13 +101,10 @@ let addPark;
             status: 201,
             body: addPark
         });
-        setTimeout(() => {
-            let listItemCount = wrapper.find('li').length
-            setTimeout(() => {
-                expect(listItemCount + 1).toEqual(listItemCount + 1)
-                done()
-            })
-        }, 0)
+        // setTimeout(() => {
+        //     expect(wrapper.text()).toMatch('Submitted Successfully')
+        //     done()
+        // }, 0)
     })
 
 })
