@@ -1,15 +1,13 @@
 import ParkShowContainer from '../../../app/javascript/react/containers/ParkShowContainer';
 import { mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
-import React from 'react'
-import fetchMock from 'fetch-mock'
+import React from 'react';
+import fetchMock from 'fetch-mock';
 
 describe('ParkShowContainer', () => {
   let wrapper;
   let park;
 
-  beforeEach(() => {
-    jasmineEnzyme();
     park = {
       id: '1',
       name: "Boston Common",
@@ -24,7 +22,6 @@ describe('ParkShowContainer', () => {
       body: {park: park}
     })
     wrapper = mount(<ParkShowContainer params={{id: '1'}}/>)
-  });
 
   afterEach(fetchMock.restore)
 

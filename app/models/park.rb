@@ -7,7 +7,7 @@ class Park < ApplicationRecord
   ]
 
   validates :name, :address, :city, :state, :zip, presence: true
-  validates :zip, length: {minmum: 5, maximum: 5}
+  validates :zip, length: {is: 5}
   validates :state, inclusion: { in: STATES }
 
   has_many :reviews
