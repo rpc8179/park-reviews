@@ -12,9 +12,9 @@ class Api::V1::ParksController < ApplicationController
     def create
         park = Park.new(name: params["name"], address: params["address"], city: params["city"], state: params["state"], zip: params["zip"], description: params["description"])
         if park.save
-            render json: { park: park, error: [], works: "Submitted Successfully!"}
+            render json: { park: park, error: [], successStatus: "Submitted Successfully!"}
         else
-            render json: { park: {}, error: park.errors.full_messages, works: "" }
+            render json: { park: {}, error: park.errors.full_messages, successStatus: "" }
 
 
             # @failure = park.errors.full_messages.to_sentence
