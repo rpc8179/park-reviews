@@ -12,11 +12,9 @@ class Api::V1::ParksController < ApplicationController
     def create
         park = Park.new(name: params["name"], address: params["address"], city: params["city"], state: params["state"], zip: params["zip"], description: params["description"])
         if park.save
-            flash[:notice] = "Park added successfully!"
-            render json: { park: park, error: []}
-            # react router push for redirect
+            render json: { park: park, error: [], works: "Submitted Successfully!"}
         else
-            render json: { park: {}, error: park.errors.full_messages }
+            render json: { park: {}, error: park.errors.full_messages, works: "" }
 
 
             # @failure = park.errors.full_messages.to_sentence

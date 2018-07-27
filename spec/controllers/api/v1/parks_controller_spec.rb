@@ -26,4 +26,15 @@ RSpec.describe Api::V1::ParksController, type: :controller do
       expect(returned_json["park"]["description"]).to eq "Has a great grass field and lots of people yelling and running around."
     end
   end
+
+  describe "POST#create" do
+      it'should create a new park' do
+          numParksBefore = Park.all.length
+          get :create, params: {name: first_park.name, address: first_park.address, city: first_park.city, state: first_park.state, zip: first_park.zip, description: first_park.description}
+          expect(response.status).to eq 200
+          expect(response.content_type).to eq('application/json')
+          numParksAfter = Park.all
+          expect(numParksBefore + 1).to eq 2
+      end
+  end
 end

@@ -4,10 +4,10 @@ const ReviewTile = (props) => {
   return(
 
     <div>
-      {props.rating}
-      {props.body}
-      {props.user}
-      {props.created_at}
+      {props.rating} <br />
+      {props.body}<br />
+      {props.user}<br />
+      {props.created_at}<br /> <br /> <br />
     </div>
   )
 }
