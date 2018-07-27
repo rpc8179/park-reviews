@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TextField from '../components/TextField'
-import RatingSelectField from '../components/RatinSelectField'
+import RatingSelectField from '../components/RatingSelectField'
 
 class ReviewsFormContainer extends Component {
   constructor(props) {
