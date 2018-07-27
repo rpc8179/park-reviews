@@ -1,4 +1,5 @@
 class Api::V1::ReviewsController < ApplicationController
+  protect_from_forgery unless: -> { request.format.json? }
   def index
     reviews = Park.find(params[:park_id]).reviews
 
@@ -19,5 +20,20 @@ class Api::V1::ReviewsController < ApplicationController
     render json: {
       formatted_reviews: formatted_reviews
     }
+  end
+
+  def create
+    review = Review.new(review_params)
+    review.user = current_user
+    if review.save
+      render json: { review: review }
+    else
+      render json: { review: {}, errors: review.errors.full_messages }
+    end
+  end
+
+  private
+  def review_params
+    params.require(:review).permit(:park_id, :rating, :body)
   end
 end

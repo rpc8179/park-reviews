@@ -5,6 +5,7 @@ import ParkFormContainer from './ParkFormContainer'
 import ParkShowContainer from './ParkShowContainer'
 import ParkContainer from './ParkContainer'
 
+import ReviewsFormContainer from './ReviewsFormContainer'
 
 const App = (props) => {
   return (
@@ -13,7 +14,10 @@ const App = (props) => {
         <Route path='/'>
             <Route path='/parks' />
             <Route path='/parks/new' component={ParkFormContainer} />
-            <Route path='/parks/:id' component={ParkContainer} />
+            <Route path='/parks/:id'>
+              <IndexRoute component={ParkContainer}/>
+              <Route path='/parks/:id/reviews/new' component={ReviewsFormContainer}/>
+            </Route>
         </Route>
       </Router>
     </div>
