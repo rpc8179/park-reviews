@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import TextField from '../components/TextField'
-import SelectField from '../components/SelectField'
+import RatingSelectField from '../components/RatinSelectField'
 
 class ReviewsFormContainer extends Component {
   constructor(props) {
@@ -82,7 +82,7 @@ class ReviewsFormContainer extends Component {
             value={this.state.body}
             handleChange={this.handleFieldChange}
           />
-          <SelectField
+          <RatingSelectField
             label='rating'
             name='rating'
             value={this.state.rating}
