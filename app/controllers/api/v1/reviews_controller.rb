@@ -23,22 +23,23 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def create
+    binding.pry
     review = Review.new(review_params)
     review.user = current_user
     if review.save
-      render json: { review: review }
+      render json: { review: review, errors: [] }
     else
       render json: { review: {}, errors: review.errors.full_messages }
     end
   end
 
+  def edit
 
+  end
 
-  # def update
-  #
-  #   review = Review.find()
-  #
-  # end
+  def update
+
+  end
 
   private
   def review_params

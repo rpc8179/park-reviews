@@ -31,10 +31,7 @@ class ReviewsFormContainer extends Component {
     this.setState({ newState })
   }
 
-
   handleSubmit = (event) => {
-    let id = this.props.params.id
-    debugger;
     event.preventDefault();
     let formPayload = this.state
     fetch(`/api/v1/parks/${this.state.park_id}/reviews.json`,
@@ -55,17 +52,13 @@ class ReviewsFormContainer extends Component {
       }
     })
     .then(response => response.json())
-    .then(body => {
-      debugger;
-      if (body.errors.length === 0) {
-        debugger;
-        browserHistory.push(`/parks/${id}`)  
-      } else {
-        this.setState({ errors: body.errors})
-      }
+    .then(response => {
+      this.setState({errors: response.errors})
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
+
+
 
 
   render() {

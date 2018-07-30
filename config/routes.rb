@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :parks, only: [:index, :show, :new, :create, :update, :edit] do
-        resources :reviews, only: [:index,:show, :new, :create]
+        resources :reviews, only: [:index,:show, :new, :create, :update, :edit]
       end
       resources :reviews
     end

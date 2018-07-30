@@ -1,5 +1,5 @@
 class ParksController < ApplicationController
-  before_action :authorize_user, except: [:index, :show, :edit]
+  before_action :authorize_user, except: [:index, :show, :edit, :new]
   def index
     @parks = Park.all
   end
@@ -10,6 +10,10 @@ class ParksController < ApplicationController
 
   def edit
     @park = Park.find(params[:id])
+  end
+
+  def create
+    redirect_to parks_path(params.park_id)
   end
 
   def update
