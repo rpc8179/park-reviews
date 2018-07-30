@@ -11,7 +11,7 @@ class ParkFormEditContainer extends Component {
       parkCity: '',
       parkState: '',
       parkZip: '',
-      parkDescriptions: '',
+      parkDescription: '',
       updatedPark: {},
       errors: [],
       works: ''
@@ -71,8 +71,7 @@ class ParkFormEditContainer extends Component {
             city: this.state.parkCity,
             state: this.state.parkState,
             zip: this.state.parkZip,
-            description: this.state.parkDescription
-        };
+            description: this.state.parkDescription        };
         fetch(`/api/v1/parks/${this.props.params.id}`, {
             credentials: 'same-origin',
             method: 'PATCH',
@@ -119,7 +118,7 @@ class ParkFormEditContainer extends Component {
               parkCity: body.park.city,
               parkZip: body.park.zip,
               parkState: body.park.state,
-              parkDescriptions: body.park.description,
+              parkDescription: body.park.description,
               parkId: body.park.id
           })
       })
@@ -164,7 +163,7 @@ class ParkFormEditContainer extends Component {
 
                     <div className='row'>
                         <label>Description:</label>
-                        <input type='text' className='parkDescription' onChange = {this.handleDescriptionChange} value={this.state.parkDescriptions}/>
+                        <input type='text' className='parkDescription' onChange = {this.handleDescriptionChange} value={this.state.parkDescription}/>
                     </div>
 
                     <div>
