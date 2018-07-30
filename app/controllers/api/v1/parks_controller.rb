@@ -35,10 +35,5 @@ class Api::V1::ParksController < ApplicationController
     def park_params
       params.require(:park).permit(:name, :address, :city, :state, :zip, :description)
     end
-    def authorize_user
-      if !user_signed_in?
-        flash[:notice] = "You Do not have access to this page"
-        redirect_to parks_path
-      end
-    end
+
 end

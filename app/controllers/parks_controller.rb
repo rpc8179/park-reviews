@@ -1,4 +1,5 @@
 class ParksController < ApplicationController
+  before_action :authorize_user, except: [:index, :show, :edit]
   def index
     @parks = Park.all
   end
@@ -20,9 +21,10 @@ class ParksController < ApplicationController
     @park.destroy
     redirect_to parks_path
   end
+
   private
   def authorize_user
-    if !user_signed_in? || !current_user.admin? 
+    if !user_signed_in? || !current_user.admin?
       flash[:notice] = "You Do not have access to this page"
       redirect_to parks_path
     end
