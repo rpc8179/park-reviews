@@ -90,7 +90,7 @@ class ParkFormEditContainer extends Component {
         .then(response => response.json())
         .then(body => {
             this.setState({ park: body.park, error: body.errors })
-            if (body.park != {}) {
+            if (body.park !== {}) {
               browserHistory.push(`/parks/${this.props.params.id}`)
             }
         })
