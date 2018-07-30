@@ -12,7 +12,7 @@ class ParkFormEditContainer extends Component {
       parkState: '',
       parkZip: '',
       parkDescription: '',
-      updatedPark: {},
+      park: {},
       errors: [],
       works: ''
     }
@@ -27,19 +27,19 @@ class ParkFormEditContainer extends Component {
   }
 
     handleNameChange(event) {
-        this.setState({parkName: event.target.value})
+      this.setState({parkName: event.target.value})
     }
 
     handleAddressChange(event) {
-        this.setState({parkAddress: event.target.value})
+      this.setState({parkAddress: event.target.value})
     }
 
     handleCityChange(event) {
-        this.setState({parkCity: event.target.value})
+      this.setState({parkCity: event.target.value})
     }
 
     handleStateChange(event) {
-        this.setState({parkState: event.target.value})
+      this.setState({parkState: event.target.value})
     }
 
     handleZipChange(event) {
@@ -89,8 +89,10 @@ class ParkFormEditContainer extends Component {
         })
         .then(response => response.json())
         .then(body => {
-            this.setState({ updatedPark: body.park, error: body.errors })
-            browserHistory.push(`/parks/${this.props.params.id}`)
+            this.setState({ park: body.park, error: body.errors })
+            if (body.park != {}) {
+              browserHistory.push(`/parks/${this.props.params.id}`)
+            }
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`))
     }

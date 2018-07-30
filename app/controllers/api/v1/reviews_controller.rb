@@ -34,11 +34,11 @@ class Api::V1::ReviewsController < ApplicationController
 
 
 
-  def update
-  
-    review = Review.find()
-
-  end
+  # def update
+  #
+  #   review = Review.find()
+  #
+  # end
 
   private
   def review_params

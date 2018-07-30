@@ -27,7 +27,7 @@ class Api::V1::ParksController < ApplicationController
       if park.update(park_params)
         render json: {park: park, error: ''}
       else
-        render json: {park: park, error: ''}
+        render json: {park: park, error: 'Update not Completed status: 422'}
       end
     end
 
