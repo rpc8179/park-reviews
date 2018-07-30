@@ -1,6 +1,6 @@
 import React from 'react'
 
-const SelectField = props => {
+const RatingSelectField = props => {
   return(
     <div>
       <label>
@@ -18,4 +18,4 @@ const SelectField = props => {
   )
 }
 
-export default SelectField;
+export default RatingSelectField;

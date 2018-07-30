@@ -42,7 +42,7 @@ Review.create!(
 )
 Review.create!(
   rating: 0,
-  body: 'MY EYES ARE BLEEDING, FIRE EVERYWHERE, AAAAAAAAAAAH',
+  body: 'What a delight to the eyes, Trees everywhere, Ahhhhh~',
   park_id: 1,
   user_id: 1
 )
