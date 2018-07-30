@@ -10,5 +10,5 @@ class Park < ApplicationRecord
   validates :zip, length: {is: 5}
   validates :state, inclusion: { in: STATES }
 
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 end

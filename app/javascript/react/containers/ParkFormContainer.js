@@ -75,7 +75,7 @@ class ParkFormContainer extends Component {
             description: this.state.parkDescription
         };
 
-        fetch('/api/v1/parks.json', {
+        fetch(`/api/v1/parks.json`, {
             credentials: 'same-origin',
             method: 'POST',
             body: JSON.stringify(formPayload),

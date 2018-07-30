@@ -32,6 +32,14 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
+
+
+  def update
+  
+    review = Review.find()
+
+  end
+
   private
   def review_params
     params.require(:review).permit(:park_id, :rating, :body)
