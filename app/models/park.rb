@@ -6,6 +6,12 @@ class Park < ApplicationRecord
     'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'
   ]
 
+  def admin?
+    role == "Admin"
+  end
+
+  
+
   validates :name, :address, :city, :state, :zip, presence: true
   validates :zip, length: {is: 5}
   validates :state, inclusion: { in: STATES }

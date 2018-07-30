@@ -12,12 +12,19 @@ class ParksController < ApplicationController
   end
 
   def update
-    
+
   end
 
   def destroy
     @park = Park.find(params[:id])
     @park.destroy
     redirect_to parks_path
+  end
+  private
+  def authorize_user
+    if !user_signed_in? || !current_user.admin? 
+      flash[:notice] = "You Do not have access to this page"
+      redirect_to parks_path
+    end
   end
 end
