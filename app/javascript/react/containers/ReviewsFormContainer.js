@@ -34,7 +34,6 @@ class ReviewsFormContainer extends Component {
 
   handleSubmit = (event) => {
     let id = this.props.params.id
-    debugger;
     event.preventDefault();
     let formPayload = this.state
     fetch(`/api/v1/parks/${this.state.park_id}/reviews.json`,
@@ -59,7 +58,7 @@ class ReviewsFormContainer extends Component {
       debugger;
       if (body.errors.length === 0) {
         debugger;
-        browserHistory.push(`/parks/${id}`)  
+        browserHistory.push(`/parks/${id}`)
       } else {
         this.setState({ errors: body.errors})
       }

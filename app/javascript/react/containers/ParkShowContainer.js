@@ -13,7 +13,10 @@ class ParkShowContainer extends Component {
         Description: ''
       }
     }
+
   }
+
+
 
   componentDidMount() {
     fetch(`/api/v1/parks/${this.props.params.id}`)

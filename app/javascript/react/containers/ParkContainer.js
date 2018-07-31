@@ -12,6 +12,7 @@ const ParkContainer = (props) => {
       <ReviewsContainer
         park_id={props.params.id}
       />
+    <button className="button">Destroy Park</button>
     </div>
   )
 }

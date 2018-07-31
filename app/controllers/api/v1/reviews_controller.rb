@@ -22,8 +22,11 @@ class Api::V1::ReviewsController < ApplicationController
     }
   end
 
+  def show
+    render json: { review: Review.find(params[:id]) }
+  end
+
   def create
-    binding.pry
     review = Review.new(review_params)
     review.user = current_user
     if review.save
@@ -34,10 +37,21 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def edit
-
+    binding.pry
+    render json: { review: Review.find(params[:id]), errors: ''  }
   end
 
   def update
+    review = Review.find(params[:id])
+    if review.update(review_params)
+      render json: {review: review}
+
+    else
+      render json: {errors: review.errors}, status: 422
+    end
+  end
+  def destroy
+    binding.pry
 
   end
 
