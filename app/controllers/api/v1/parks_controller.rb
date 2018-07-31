@@ -15,9 +15,25 @@ class Api::V1::ParksController < ApplicationController
             render json: { park: park, error: [], successStatus: "Submitted Successfully!"}
         else
             render json: { park: {}, error: park.errors.full_messages, successStatus: "" }
-
-
-            # @failure = park.errors.full_messages.to_sentence
         end
     end
+
+    def edit
+    end
+
+    def update
+
+      park = Park.find(params[:id])
+      if park.update(park_params)
+        render json: {park: park, error: ''}
+      else
+        render json: {errors: park.errors}, status: 422
+      end
+    end
+
+    private
+    def park_params
+      params.require(:park).permit(:name, :address, :city, :state, :zip, :description)
+    end
+
 end
