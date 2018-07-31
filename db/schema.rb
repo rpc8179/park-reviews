@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_195606) do
+ActiveRecord::Schema.define(version: 2018_07_31_153938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 2018_07_24_195606) do
     t.string "state", null: false
     t.string "zip", null: false
     t.string "description"
+  end
+
+  create_table "review_upvotes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.integer "value", null: false
+    t.index ["review_id"], name: "index_review_upvotes_on_review_id"
+    t.index ["user_id"], name: "index_review_upvotes_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|
