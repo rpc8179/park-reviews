@@ -1,10 +1,14 @@
-<h1> Parks </h1>
-<ul>
+<h1 class="callout park-page-title"> Parks </h1>
+<ul class="parks-list">
   <% @parks.each do |park| %>
-    <li>
-      <%= link_to park.name, park_path(park)  %> <br>
-      <%= park.city %> <br>
-      <%= park.state %>
+    <li class="callout park-tile">
+      <div class="park-name">
+        <%= link_to park.name, park_path(park) %> <br>
+      </div>
+      <div class="park-location">
+        <%= park.city %>,
+        <%= park.state %>
+      </div>
     </li>
   <% end %>
 </ul>

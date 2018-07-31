@@ -1,0 +1,26 @@
+.park-page-title {
+  background-color: #89B595;
+  color: #256937;
+}
+
+.parks-list {
+  list-style: none;
+}
+
+.park-tile {
+  background-color: #FFF0DF;
+  margin-right: 1em;
+}
+
+.park-name a{
+  font-weight: bold;
+  font-size: 1.7em;
+  color: #3E804F;
+}
+.park-name a:hover {
+  color: #AB8253;
+}
+
+.park-location {
+  font-size: .7em;
+}
