@@ -90,7 +90,7 @@ class ParkFormEditContainer extends Component {
         .then(response => response.json())
         .then(body => {
             this.setState({ park: body.park, error: body.errors })
-            if (body.park != {}) {
+            if (body.park !== {}) {
               browserHistory.push(`/parks/${this.props.params.id}`)
             }
         })
@@ -100,8 +100,6 @@ class ParkFormEditContainer extends Component {
 
 
     componentDidMount() {
-
-
       fetch(`/api/v1/parks/${this.props.params.id}`)
       .then(response => {
           if(response.ok) {

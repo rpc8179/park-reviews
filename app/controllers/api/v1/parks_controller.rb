@@ -22,12 +22,11 @@ class Api::V1::ParksController < ApplicationController
     end
 
     def update
-
       park = Park.find(params[:id])
       if park.update(park_params)
         render json: {park: park, error: ''}
       else
-        render json: {park: park, error: 'Update not Completed status: 422'}
+        render json: {error: park.errors}, status: 422
       end
     end
 
