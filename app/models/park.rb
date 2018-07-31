@@ -10,8 +10,6 @@ class Park < ApplicationRecord
     role == "Admin"
   end
 
-  
-
   validates :name, :address, :city, :state, :zip, presence: true
   validates :zip, length: {is: 5}
   validates :state, inclusion: { in: STATES }
