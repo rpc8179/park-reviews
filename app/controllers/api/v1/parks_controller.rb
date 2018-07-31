@@ -27,7 +27,7 @@ class Api::V1::ParksController < ApplicationController
       if park.update(park_params)
         render json: {park: park, error: ''}
       else
-        render json: {error: park.error}, status: 422
+        render json: {errors: park.errors}, status: 422
       end
     end
 
