@@ -41,7 +41,8 @@ Review.create!(
   park_id: 2
 )
 Review.create!(
-  rating: 2,
+  rating: 0,
+  body: 'What a delight to the eyes, Trees everywhere, Ahhhhh~',
   park_id: 1,
   user_id: 1
 )

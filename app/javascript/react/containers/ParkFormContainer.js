@@ -12,7 +12,7 @@ class ParkFormContainer extends Component {
             parkDescriptions: '',
             newPark: {},
             errors: [],
-            works: ''
+            successStatus: ''
         }
 
         this.handleNameChange = this.handleNameChange.bind(this)
@@ -58,7 +58,7 @@ class ParkFormContainer extends Component {
             parkZip: '',
             parkDescription: '',
             errors: [],
-            works: ''
+            successStatus: ''
         })
     }
 
@@ -93,7 +93,7 @@ class ParkFormContainer extends Component {
             this.setState({
                 newPark: body.park,
                 errors: body.error,
-                works: body.works
+                successStatus: body.successStatus
             })
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -105,7 +105,7 @@ class ParkFormContainer extends Component {
             <div>
                 <h1>Add A New Park!</h1>
                 {this.state.errors}
-                {this.state.works}
+                {this.state.successStatus}
 
 
                 <form className='newParkForm'>

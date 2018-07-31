@@ -8,6 +8,11 @@ class ReviewsContainer extends Component {
     this.state = {
       reviews: []
     }
+    this.deleteReview = this.deleteReview.bind(this)
+  }
+
+  deleteReview() {
+    fetch()
   }
 
   componentDidMount() {
