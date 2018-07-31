@@ -4,7 +4,9 @@
     <li>
       <%= link_to park.name, park_path(park)  %> <br>
       <%= park.city %> <br>
-      <%= park.state %>
+      <%= park.state %> <br>
+      <%= link_to "Edit Park", edit_park_path(park.id) %> <br>
+      <%= link_to "Delete Park", park_path(park.id), method: :delete, data: { confirm: "Are you sure?  This will delete all the associated reviews too!" } %> <br> <br>
     </li>
   <% end %>
 </ul>
