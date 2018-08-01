@@ -12,10 +12,6 @@ class ParksController < ApplicationController
     @park = Park.find(params[:id])
   end
 
-  def create
-    redirect_to parks_path(params.park_id)
-  end
-
   def update
 
   end
@@ -27,7 +23,7 @@ class ParksController < ApplicationController
   end
 
   private
-  
+
   def authorize_user
     if !user_signed_in? || !current_user.admin?
       flash[:notice] = "You Do not have access to this page"
