@@ -9,10 +9,19 @@ class Api::V1::ReviewsController < ApplicationController
 
     formatted_reviews = []
     reviews.each_with_index do |val, index|
+      upvote_values = val.review_upvotes.map { |upvote| upvote.value }
+      upvote_total = 0
+      downvote_total = 0
+      upvote_values.each do |val|
+        upvote_total += 1 if val === 1
+        downvote_total +=1 if val === -1
+      end
       formatted_reviews.push(
         {
           review_data: val,
-          user_data: reviews_users[index]
+          user_data: reviews_users[index],
+          upvote_total: upvote_total,
+          downvote_total: downvote_total
         }
       )
     end
