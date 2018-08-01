@@ -9,12 +9,13 @@ class ReviewsFormContainer extends Component {
     this.state = {
       body: '',
       rating: '',
-      park_id: props.params.id,
-      errors: []
+      review_id: this.props.params.id,
+      errors: [],
+      updatedReview: {}
     }
     this.handleFieldChange = this.handleFieldChange.bind(this)
     this.handleClear = this.handleClear.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleUpdate = this.handleUpdate.bind(this)
   }
 
   handleFieldChange = (event) => {
@@ -31,14 +32,12 @@ class ReviewsFormContainer extends Component {
     this.setState({ newState })
   }
 
-
-  handleSubmit = (event) => {
-    let id = this.props.params.id
+  handleUpdate = (event) => {
     event.preventDefault();
     let formPayload = this.state
-    fetch(`/api/v1/parks/${this.state.park_id}/reviews.json`,
+    fetch(`/api/v1/reviews/${this.state.review_id}`,
       {
-        method: "POST",
+        method: "PATCH",
         body: JSON.stringify(formPayload),
         credentials: 'same-origin',
         headers: { "Content-Type": 'application/json' }
@@ -54,32 +53,52 @@ class ReviewsFormContainer extends Component {
       }
     })
     .then(response => response.json())
-    .then(body => {
-      if (body.errors.length === 0) {
-        browserHistory.push(`/parks/${id}`)
+    .then(response => {
+      this.setState({
+        errors: response.errors,
+        updatedReview: {rating: this.state.rating, body: this.state.body}
+      })
+      browserHistory.push(`/parks`)
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  componentDidMount() {
+    fetch(`/api/v1/reviews/${this.state.review_id}`)
+    .then(response => {
+      if(response.ok) {
+        return response;
       } else {
-        this.setState({ errors: body.errors})
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
       }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({
+        body: body.review.body,
+        rating: body.review.rating
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   render() {
-    let errors = this.state.errors.map(error => {
-      if(error === "User must exist") {
-        error = "You need to be logged in to do this"
-      }
-      return(
-        <div key={error}>
-          {error}
-          <br />
-        </div>
-      )
-    })
+    // let errors = this.state.errors.map(error => {
+    //   if(error === "User must exist") {
+    //     error = "You need to be logged in to do this"
+    //   }
+    //   return(
+    //     <div key={error}>
+    //       {error}
+    //       <br />
+    //     </div>
+    //   )
+    // })
     return(
       <div>
-        {errors}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleUpdate}>
           <TextField
             label='body'
             name='body'
@@ -96,7 +115,7 @@ class ReviewsFormContainer extends Component {
 
           <div className="button-group">
             <button className="button" onClick={this.handleClear}>Clear</button>
-            <input className="button" type="submit" value="Submit" />
+            <input className="button" type="submit" value="Update" />
           </div>
         </form>
       </div>

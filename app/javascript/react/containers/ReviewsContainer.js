@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReviewTile from '../components/ReviewTile'
 
-
 class ReviewsContainer extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +20,7 @@ class ReviewsContainer extends Component {
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
+          error = new Error(errorMessage);
         throw(error);
       }
     })
@@ -35,8 +34,10 @@ class ReviewsContainer extends Component {
   }
 
   render() {
+
     let reviews = this.state.reviews.map((review) => {
       return(
+        <div>
         <ReviewTile
           key={review.review_data.id}
           id={review.review_data.id}
@@ -47,6 +48,7 @@ class ReviewsContainer extends Component {
           upvote_total={review.upvote_total}
           downvote_total={review.downvote_total}
         />
+        </div>
       )
     })
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 
-class ParkFormContainer extends Component {
+class ParkFormEditContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -9,10 +10,10 @@ class ParkFormContainer extends Component {
       parkCity: '',
       parkState: '',
       parkZip: '',
-      parkDescriptions: '',
-      newPark: {},
+      parkDescription: '',
+      park: {},
       errors: [],
-      successStatus: ''
+      works: ''
     }
 
     this.handleNameChange = this.handleNameChange.bind(this)
@@ -21,8 +22,7 @@ class ParkFormContainer extends Component {
     this.handleStateChange = this.handleStateChange.bind(this)
     this.handleZipChange = this.handleZipChange.bind(this)
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
-    this.handleFormSubmit = this.handleFormSubmit.bind(this)
-    this.handleFormClear = this.handleFormClear.bind(this)
+    this.handleFormUpdate = this.handleFormUpdate.bind(this)
   }
 
   handleNameChange(event) {
@@ -58,11 +58,11 @@ class ParkFormContainer extends Component {
       parkZip: '',
       parkDescription: '',
       errors: [],
-      successStatus: ''
+      works: ''
     })
   }
 
-  handleFormSubmit(event) {
+  handleFormUpdate(event) {
     event.preventDefault();
     let formPayload = {
       name: this.state.parkName,
@@ -70,12 +70,10 @@ class ParkFormContainer extends Component {
       city: this.state.parkCity,
       state: this.state.parkState,
       zip: this.state.parkZip,
-      description: this.state.parkDescription
-    };
-
-    fetch('/api/v1/parks.json', {
+      description: this.state.parkDescription        };
+    fetch(`/api/v1/parks/${this.props.params.id}`, {
       credentials: 'same-origin',
-      method: 'POST',
+      method: 'PATCH',
       body: JSON.stringify(formPayload),
       headers: { 'Content-Type': 'application/json'}
     })
@@ -90,10 +88,35 @@ class ParkFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      this.setState({ park: body.park, errors: body.errors })
+      if (body.park !== {}) {
+        browserHistory.push(`/parks/${this.props.params.id}`)
+      }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
+
+  componentDidMount() {
+    fetch(`/api/v1/parks/${this.props.params.id}`)
+    .then(response => {
+      if(response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
       this.setState({
-        newPark: body.park,
-        errors: body.error,
-        successStatus: body.successStatus
+        parkName: body.park.name,
+        parkAddress: body.park.address,
+        parkCity: body.park.city,
+        parkZip: body.park.zip,
+        parkState: body.park.state,
+        parkDescription: body.park.description,
+        parkId: body.park.id
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -102,48 +125,44 @@ class ParkFormContainer extends Component {
   render() {
     return(
       <div>
-        <h1>Add A New Park!</h1>
+        <h1>Edit Your Park</h1>
         {this.state.errors}
-        {this.state.successStatus}
+        {this.state.works}
 
-        <form className='newParkForm'>
+        <form className='newParkForm' onSubmit={this.handleFormUpdate}>
           <div className='row'>
             <label>Park Name:</label>
-            <input type='text' className='parkName' onChange = {this.handleNameChange}/>
+            <input type='text' className='parkName' onChange = {this.handleNameChange} value={this.state.parkName}/>
           </div>
 
           <div className='row'>
             <label>Address:</label>
-            <input type='text' className='parkAddress' onChange = {this.handleAddressChange}/>
+            <input type='text' className='parkAddress' onChange = {this.handleAddressChange} value={this.state.parkAddress}/>
           </div>
 
           <div className='row'>
             <label>City:</label>
-            <input type='text' className='parkCity' onChange = {this.handleCityChange}/>
+            <input type='text' className='parkCity' onChange = {this.handleCityChange} value={this.state.parkCity}/>
           </div>
 
           <div className='row'>
             <label>State:</label>
-            <input type='text' className='parkState' onChange = {this.handleStateChange}/>
+            <input type='text' className='parkState' onChange = {this.handleStateChange} value={this.state.parkState}/>
           </div>
 
           <div className='row'>
             <label>Zipcode:</label>
-            <input type='text' className='parkZip' onChange = {this.handleZipChange}/>
+            <input type='text' className='parkZip' onChange = {this.handleZipChange}value={this.state.parkZip} />
           </div>
 
           <div className='row'>
             <label>Description:</label>
-            <input type='text' className='parkDescription' onChange = {this.handleDescriptionChange}/>
-          </div>
-
-          <div className='row'>
-            <button className="button" onClick={this.handleFormClear}>Clear Form</button>
+            <input type='text' className='parkDescription' onChange = {this.handleDescriptionChange} value={this.state.parkDescription}/>
           </div>
 
           <div>
             <div className='row'>
-              <button className="button" onClick={this.handleFormSubmit}>Submit Park</button>
+              <button className="button">Update Park</button>
             </div>
           </div>
         </form>
@@ -151,4 +170,4 @@ class ParkFormContainer extends Component {
     )
   }
 }
-export default ParkFormContainer
+export default ParkFormEditContainer

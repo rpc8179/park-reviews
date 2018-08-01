@@ -16,6 +16,7 @@
 
  */
 
-body {
-  background-color: #B9D3C0
+.nav-profile-photo{
+  height: 45px;
+  width: auto;
 }

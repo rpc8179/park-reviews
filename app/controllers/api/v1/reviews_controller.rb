@@ -26,22 +26,39 @@ class Api::V1::ReviewsController < ApplicationController
       )
     end
 
-    render json: {
-      formatted_reviews: formatted_reviews
-    }
+    render json: { formatted_reviews: formatted_reviews }
+  end
+
+  def show
+    render json: { review: Review.find(params[:id]) }
   end
 
   def create
     review = Review.new(review_params)
     review.user = current_user
     if review.save
-      render json: { review: review }
+      render json: { review: review, errors: [] }
     else
       render json: { review: {}, errors: review.errors.full_messages }
     end
   end
 
+  def edit
+    render json: { review: Review.find(params[:id]), errors: [] }
+  end
+
+  def update
+    review = Review.find(params[:id])
+    if review.update(review_params)
+      render json: {review: review}
+
+    else
+      render json: {errors: review.errors}, status: 422
+    end
+  end
+
   private
+
   def review_params
     params.require(:review).permit(:park_id, :rating, :body)
   end

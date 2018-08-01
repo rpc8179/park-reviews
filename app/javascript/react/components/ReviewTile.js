@@ -71,6 +71,7 @@ class ReviewTile extends React.Component {
             \/
           </button>
         </div>
+        <a href={`/reviews/${props.id}/edit`}> Edit Review </a>
       </div>
     )
   }

@@ -1,18 +1,15 @@
-<h1 class="callout park-page-title"> Parks </h1>
-<ul class="parks-list">
+<h1 class="c"> Parks </h1>
+<ul>
   <% @parks.each do |park| %>
-    <li class="callout park-tile">
-      <div class="park-name">
-        <%= link_to park.name, park_path(park) %> <br>
-      </div>
-      <div class="park-location">
-        <%= park.city %>,
-        <%= park.state %>
-      </div>
+    <li>
+      <%= link_to park.name, park_path(park)  %> <br>
+      <%= park.city %> <br>
+      <%= park.state %> <br>
+      <button className="button"><%= link_to "Edit Park", edit_park_path(park.id) %> <br> </button>
+      <button className="button"><%= link_to "Delete Park", park_path(park.id), method: :delete, data: { confirm: "Are you sure?  This will delete all the associated reviews too!" } %></button> <br> <br>
     </li>
   <% end %>
 </ul>
-
 
 <div id="app">
 </div>
