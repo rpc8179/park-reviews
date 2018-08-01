@@ -9,7 +9,7 @@ class ReviewFormEditContainer extends Component {
     this.state = {
       body: '',
       rating: '',
-      review_id: props.params.id,
+      review_id: this.props.params.id,
       errors: [],
       updatedReview: {}
     }
@@ -18,14 +18,11 @@ class ReviewFormEditContainer extends Component {
     this.handleUpdate = this.handleUpdate.bind(this)
   }
 
-
-
   handleFieldChange = (event) => {
     let newState = this.state
     newState[event.target.name] = event.target.value
     this.setState(newState)
   }
-
 
   handleClear = (event) => {
     event.preventDefault();
@@ -67,32 +64,26 @@ class ReviewFormEditContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-
   componentDidMount() {
-     debugger;
     fetch(`/api/v1/reviews/${this.state.review_id}`)
     .then(response => {
-        if(response.ok) {
-            return response;
-        } else {
-            let errorMessage = `${response.status} (${response.statusText})`,
-                error = new Error(errorMessage);
-            throw(error);
-        }
+      if(response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
     })
     .then(response => response.json())
     .then(body => {
-      debugger;
-      console.log(body)
-        this.setState({
-          body: body.review.body,
-          rating: body.review.rating
-          // errors: body.review.errors
-        })
+      this.setState({
+        body: body.review.body,
+        rating: body.review.rating
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
-
 
   render() {
     // let errors = this.state.errors.map(error => {

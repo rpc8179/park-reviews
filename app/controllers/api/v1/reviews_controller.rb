@@ -17,9 +17,11 @@ class Api::V1::ReviewsController < ApplicationController
       )
     end
 
-    render json: {
-      formatted_reviews: formatted_reviews
-    }
+    render json: { formatted_reviews: formatted_reviews }
+  end
+
+  def show
+    render json: { review: Review.find(params[:id]) }
   end
 
   def show
@@ -37,7 +39,6 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def edit
-    binding.pry
     render json: { review: Review.find(params[:id]), errors: ''  }
   end
 
@@ -57,6 +58,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   private
+
   def review_params
     params.require(:review).permit(:park_id, :rating, :body)
   end

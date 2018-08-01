@@ -1,12 +1,11 @@
-import React from 'react';
-import { Route, IndexRoute, Router, browserHistory } from 'react-router';
+import React from 'react'
+import { Route, IndexRoute, Router, browserHistory } from 'react-router'
 
 import ParkFormContainer from './ParkFormContainer'
 import ParkShowContainer from './ParkShowContainer'
 import ParkContainer from './ParkContainer'
 import ParkFormEditContainer from './ParkFormEditContainer'
 import ReviewFormEditContainer from './ReviewFormEditContainer'
-
 import ReviewsFormContainer from './ReviewsFormContainer'
 
 const App = (props) => {

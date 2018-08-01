@@ -15,3 +15,8 @@
  *= require foundation_and_overrides
 
  */
+ 
+.nav-profile-photo{
+  height: 45px;
+  width: auto;
+}

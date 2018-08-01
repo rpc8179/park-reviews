@@ -25,7 +25,7 @@ class ParkShowContainer extends Component {
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
+          error = new Error(errorMessage);
         throw(error);
       }
     })
