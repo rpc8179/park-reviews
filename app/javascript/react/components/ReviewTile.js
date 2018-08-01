@@ -2,7 +2,6 @@ import React from 'react';
 
 const ReviewTile = (props) => {
   return(
-
     <div>
       {props.rating} <br />
       {props.body}<br />
@@ -11,6 +10,5 @@ const ReviewTile = (props) => {
     </div>
   )
 }
-
 
 export default ReviewTile

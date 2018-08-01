@@ -4,9 +4,7 @@
   <title>ParkReviews</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
-
-    <%= javascript_include_tag "vendor/modernizr" %>
-
+  <%= javascript_include_tag "vendor/modernizr" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -21,6 +19,7 @@
     <section class="top-bar-section">
       <ul class="right">
         <%- if current_user -%>
+        <img class="nav-profile-photo" src="<%= current_user.profile_photo %>"/>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
@@ -31,7 +30,6 @@
   </nav>
 
   <%- flash.each do |key, value| -%>
-
     <div class="flash flash-<%= key %>">
       <%= value %>
     </div>

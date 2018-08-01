@@ -23,6 +23,7 @@ class ParksController < ApplicationController
   end
 
   private
+  
   def authorize_user
     if !user_signed_in? || !current_user.admin?
       flash[:notice] = "You Do not have access to this page"

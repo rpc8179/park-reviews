@@ -57,9 +57,6 @@ class ReviewsFormContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-
-
-
   render() {
     let errors = this.state.errors.map(error => {
       if(error === "User must exist") {
@@ -68,7 +65,7 @@ class ReviewsFormContainer extends Component {
       return(
         <div key={error}>
           {error}
-          <br></br>
+          <br />
         </div>
       )
     })
@@ -82,12 +79,14 @@ class ReviewsFormContainer extends Component {
             value={this.state.body}
             handleChange={this.handleFieldChange}
           />
+
           <RatingSelectField
             label='rating'
             name='rating'
             value={this.state.rating}
             handleChange={this.handleFieldChange}
           />
+          
           <div className="button-group">
             <button className="button" onClick={this.handleClear}>Clear</button>
             <input className="button" type="submit" value="Submit" />

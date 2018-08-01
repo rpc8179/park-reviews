@@ -17,9 +17,7 @@ class Api::V1::ReviewsController < ApplicationController
       )
     end
 
-    render json: {
-      formatted_reviews: formatted_reviews
-    }
+    render json: { formatted_reviews: formatted_reviews }
   end
 
   def create
@@ -32,15 +30,8 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
-
-
-  # def update
-  #
-  #   review = Review.find()
-  #
-  # end
-
   private
+  
   def review_params
     params.require(:review).permit(:park_id, :rating, :body)
   end
