@@ -1,5 +1,5 @@
 class ParksController < ApplicationController
-  before_action :authorize_user, except: [:index, :show, :edit]
+  before_action :authorize_user, except: [:index, :show, :edit, :new]
   def index
     @parks = Park.all
   end
@@ -23,7 +23,7 @@ class ParksController < ApplicationController
   end
 
   private
-  
+
   def authorize_user
     if !user_signed_in? || !current_user.admin?
       flash[:notice] = "You Do not have access to this page"

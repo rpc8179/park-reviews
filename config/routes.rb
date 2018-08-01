@@ -2,14 +2,15 @@ Rails.application.routes.draw do
   root 'parks#index'
   devise_for :users
 
-  resources :parks, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
-    resources :reviews, only: [:index, :new, :create, :edit]
+  resources :parks do
+    resources :reviews, except: [:edit]
   end
+  resources :reviews
 
   namespace :api do
     namespace :v1 do
-      resources :parks, only: [:index, :show, :new, :create, :update, :edit] do
-        resources :reviews, only: [:index,:show, :new, :create]
+      resources :parks, except: [:destroy] do
+        resources :reviews, except: [:destroy]
       end
       resources :reviews
     end
