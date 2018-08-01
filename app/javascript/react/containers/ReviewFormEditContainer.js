@@ -82,7 +82,6 @@ class ReviewFormEditContainer extends Component {
         this.setState({
           body: body.review.body,
           rating: body.review.rating
-          // errors: body.review.errors
         })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
@@ -90,17 +89,6 @@ class ReviewFormEditContainer extends Component {
 
 
   render() {
-    // let errors = this.state.errors.map(error => {
-    //   if(error === "User must exist") {
-    //     error = "You need to be logged in to do this"
-    //   }
-    //   return(
-    //     <div key={error}>
-    //       {error}
-    //       <br></br>
-    //     </div>
-    //   )
-    // })
     return(
       <div>
         <form onSubmit={this.handleUpdate}>
