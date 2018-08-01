@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
   has_many :reviews
 
+  def admin?
+    role == "admin"
+  end
+
   mount_uploader :profile_photo, ProfilePhotoUploader
 end
