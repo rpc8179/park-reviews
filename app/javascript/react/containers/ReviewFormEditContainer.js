@@ -64,7 +64,6 @@ class ReviewsFormContainer extends Component {
   }
 
   componentDidMount() {
-    // debugger
     fetch(`/api/v1/reviews/${this.state.review_id}`)
     .then(response => {
       if(response.ok) {
