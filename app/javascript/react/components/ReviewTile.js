@@ -35,5 +35,4 @@ class ReviewTile extends Component {
   }
 }
 
-
 export default ReviewTile

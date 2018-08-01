@@ -18,14 +18,11 @@ class ReviewFormEditContainer extends Component {
     this.handleUpdate = this.handleUpdate.bind(this)
   }
 
-
-
   handleFieldChange = (event) => {
     let newState = this.state
     newState[event.target.name] = event.target.value
     this.setState(newState)
   }
-
 
   handleClear = (event) => {
     event.preventDefault();
@@ -93,22 +90,22 @@ class ReviewFormEditContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-
   render() {
-    // let errors = this.state.errors.map(error => {
-    //   if(error === "User must exist") {
-    //     error = "You need to be logged in to do this"
-    //   }
-    //   return(
-    //     <div key={error}>
-    //       {error}
-    //       <br></br>
-    //     </div>
-    //   )
-    // })
+    let errors = this.state.errors.map(error => {
+      if(error === "User must exist") {
+        error = "You need to be logged in to do this"
+      }
+      return(
+        <div key={error}>
+          {error}
+          <br />
+        </div>
+      )
+    })
     return(
       <div>
-        <form onSubmit={this.handleUpdate}>
+        {errors}
+        <form onSubmit={this.handleSubmit}>
           <TextField
             label='body'
             name='body'
