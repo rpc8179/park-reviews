@@ -11,9 +11,9 @@ class Api::V1::ParksController < ApplicationController
   def create
     park = Park.new(name: params["name"], address: params["address"], city: params["city"], state: params["state"], zip: params["zip"], description: params["description"])
     if park.save
-        render json: { park: park, error: [], successStatus: "Submitted Successfully!"}
+        render json: { park: park, errors: [], successStatus: "Submitted Successfully!"}
     else
-        render json: { park: {}, error: park.errors.full_messages, successStatus: "" }
+        render json: { park: {}, errors: park.errors.full_messages, successStatus: "" }
     end
   end
 
@@ -23,7 +23,7 @@ class Api::V1::ParksController < ApplicationController
   def update
     park = Park.find(params[:id])
     if park.update(park_params)
-      render json: {park: park, error: ''}
+      render json: {park: park, errors: ''}
     else
       render json: {errors: park.errors}, status: 422
     end
