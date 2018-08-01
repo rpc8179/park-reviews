@@ -22,7 +22,6 @@ const App = (props) => {
               <Route path='/parks/:id/reviews/new' component={ReviewsFormContainer}/>
             </Route>
             <Route path='/reviews/:id/edit' component={ReviewFormEditContainer}/>
-
         </Route>
       </Router>
     </div>

@@ -8,12 +8,10 @@ class ReviewsContainer extends Component {
     this.state = {
       reviews: []
     }
-    this.deleteReview = this.deleteReview.bind(this)
+    // this.deleteReview = this.deleteReview.bind(this)
   }
 
-  deleteReview() {
-    fetch()
-  }
+
 
   componentDidMount() {
     fetch(`/api/v1/parks/${this.props.park_id}/reviews`)
@@ -36,8 +34,10 @@ class ReviewsContainer extends Component {
   }
 
   render() {
+
     let reviews = this.state.reviews.map((review) => {
       return(
+        <div>
         <ReviewTile
           key={review.review_data.id}
           id={review.review_data.id}
@@ -46,6 +46,7 @@ class ReviewsContainer extends Component {
           body={review.review_data.body}
           created_at={review.review_data.created_at}
         />
+        </div>
       )
     })
 

@@ -50,10 +50,6 @@ class Api::V1::ReviewsController < ApplicationController
       render json: {errors: review.errors}, status: 422
     end
   end
-  def destroy
-    binding.pry
-
-  end
 
   private
   def review_params

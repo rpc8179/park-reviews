@@ -66,7 +66,6 @@ class ReviewFormEditContainer extends Component {
   }
 
   componentDidMount() {
-     debugger;
     fetch(`/api/v1/reviews/${this.state.review_id}`)
     .then(response => {
         if(response.ok) {
@@ -79,7 +78,6 @@ class ReviewFormEditContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger;
       console.log(body)
         this.setState({
           body: body.review.body,

@@ -1,4 +1,5 @@
 import React from 'react';
+// import React, { Component } from 'react'
 
 const ReviewTile = (props) => {
   return(
@@ -9,7 +10,6 @@ const ReviewTile = (props) => {
       {props.user}<br />
       {props.created_at}<br /> <br /> <br />
       <a href={`/reviews/${props.id}/edit`}> Edit Review </a>
-      <a href={`api/v1/reviews/${props.id}/destroy`}>DESTROY!!!</a>
     </div>
   )
 }
