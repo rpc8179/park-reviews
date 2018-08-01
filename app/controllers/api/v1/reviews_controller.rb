@@ -35,8 +35,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def edit
-    binding.pry
-    render json: { review: Review.find(params[:id]), errors: ''  }
+    render json: { review: Review.find(params[:id]), errors: [] }
   end
 
   def update

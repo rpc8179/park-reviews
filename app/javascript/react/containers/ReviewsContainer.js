@@ -7,10 +7,7 @@ class ReviewsContainer extends Component {
     this.state = {
       reviews: []
     }
-    // this.deleteReview = this.deleteReview.bind(this)
   }
-
-
 
   componentDidMount() {
     fetch(`/api/v1/parks/${this.props.park_id}/reviews`)
