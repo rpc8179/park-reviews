@@ -71,7 +71,7 @@ class ParkFormEditContainer extends Component {
             city: this.state.parkCity,
             state: this.state.parkState,
             zip: this.state.parkZip,
-            description: this.state.parkDescription        };
+            description: this.state.parkDescription};
         fetch(`/api/v1/parks/${this.props.params.id}`, {
             credentials: 'same-origin',
             method: 'PATCH',
@@ -100,8 +100,6 @@ class ParkFormEditContainer extends Component {
 
 
     componentDidMount() {
-
-
       fetch(`/api/v1/parks/${this.props.params.id}`)
       .then(response => {
           if(response.ok) {

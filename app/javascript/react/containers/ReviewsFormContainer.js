@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import TextField from '../components/TextField'
 import RatingSelectField from '../components/RatingSelectField'
+import { browserHistory } from 'react-router'
 
 class ReviewsFormContainer extends Component {
   constructor(props) {
@@ -30,7 +31,9 @@ class ReviewsFormContainer extends Component {
     this.setState({ newState })
   }
 
+
   handleSubmit = (event) => {
+    let id = this.props.params.id
     event.preventDefault();
     let formPayload = this.state
     fetch(`/api/v1/parks/${this.state.park_id}/reviews.json`,
@@ -51,13 +54,15 @@ class ReviewsFormContainer extends Component {
       }
     })
     .then(response => response.json())
-    .then(response => {
-      this.setState({errors: response.errors})
+    .then(body => {
+      if (body.errors.length === 0) {
+        browserHistory.push(`/parks/${id}`)
+      } else {
+        this.setState({ errors: body.errors})
+      }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
-
-
 
 
   render() {

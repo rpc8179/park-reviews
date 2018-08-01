@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_07_27_142051) do
     t.bigint "user_id", null: false
     t.bigint "park_id", null: false
     t.integer "rating", null: false
-    t.text "body", null: false
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["park_id"], name: "index_reviews_on_park_id"

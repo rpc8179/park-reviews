@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 class ParkFormContainer extends Component {
     constructor(props) {
         super(props)
@@ -24,7 +23,6 @@ class ParkFormContainer extends Component {
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this)
         this.handleFormSubmit = this.handleFormSubmit.bind(this)
         this.handleFormClear = this.handleFormClear.bind(this)
-
     }
 
     handleNameChange(event) {
@@ -149,7 +147,6 @@ class ParkFormContainer extends Component {
                     <div>
                         <div className='row'>
                             <button className="button" onClick={this.handleFormSubmit}>Submit Park</button>
-
                         </div>
                     </div>
                 </form>

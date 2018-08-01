@@ -5,6 +5,7 @@ import ParkFormContainer from './ParkFormContainer'
 import ParkShowContainer from './ParkShowContainer'
 import ParkContainer from './ParkContainer'
 import ParkFormEditContainer from './ParkFormEditContainer'
+import ReviewFormEditContainer from './ReviewFormEditContainer'
 
 import ReviewsFormContainer from './ReviewsFormContainer'
 
@@ -20,6 +21,7 @@ const App = (props) => {
               <IndexRoute component={ParkContainer}/>
               <Route path='/parks/:id/reviews/new' component={ReviewsFormContainer}/>
             </Route>
+            <Route path='/reviews/:id/edit' component={ReviewFormEditContainer}/>
         </Route>
       </Router>
     </div>

@@ -1,4 +1,3 @@
-
 class Api::V1::ParksController < ApplicationController
     protect_from_forgery unless: -> { request.format.json? }
     def index
@@ -22,7 +21,6 @@ class Api::V1::ParksController < ApplicationController
     end
 
     def update
-
       park = Park.find(params[:id])
       if park.update(park_params)
         render json: {park: park, error: ''}
