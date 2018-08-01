@@ -3,6 +3,9 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:park_id])
+    @review = Review.find(params[:id])
+  end
+
+  def destroy
   end
 end
