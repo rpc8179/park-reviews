@@ -12,9 +12,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    binding.pry
-    # @review = Review.find(params[:id])
-    # @review.destroy
-    # redirect_to parks_path
+    binding.pry    
   end
 end

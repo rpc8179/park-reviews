@@ -18,6 +18,8 @@ class ReviewFormEditContainer extends Component {
     this.handleUpdate = this.handleUpdate.bind(this)
   }
 
+
+
   handleFieldChange = (event) => {
     let newState = this.state
     newState[event.target.name] = event.target.value
@@ -64,6 +66,7 @@ class ReviewFormEditContainer extends Component {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
+
 
   componentDidMount() {
      debugger;
@@ -121,6 +124,7 @@ class ReviewFormEditContainer extends Component {
           <div className="button-group">
             <button className="button" onClick={this.handleClear}>Clear</button>
             <input className="button" type="submit" value="Update" />
+
           </div>
         </form>
       </div>
