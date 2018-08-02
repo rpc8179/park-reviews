@@ -1,5 +1,13 @@
 User.create!(
-  email: 'user@user.cuser',
+  email: 'user1@user.cuser',
+  password: 'aaaaaaa'
+)
+User.create!(
+  email: 'user2@user.cuser',
+  password: 'aaaaaaa'
+)
+User.create!(
+  email: 'user3@user.cuser',
   password: 'aaaaaaa'
 )
 
@@ -45,4 +53,20 @@ Review.create!(
   body: 'What a delight to the eyes, Trees everywhere, Ahhhhh~',
   park_id: 1,
   user_id: 1
+)
+
+ReviewUpvote.create!(
+  user_id: 1,
+  review_id: 1,
+  value: 1,
+)
+ReviewUpvote.create!(
+  user_id: 2,
+  review_id: 1,
+  value: 1,
+)
+ReviewUpvote.create!(
+  user_id: 3,
+  review_id: 1,
+  value: -1,
 )

@@ -26,7 +26,11 @@ class ReviewsContainer extends Component {
      })
    }
   componentDidMount() {
-    fetch(`/api/v1/parks/${this.props.park_id}/reviews`)
+    fetch(`/api/v1/parks/${this.props.park_id}/reviews`,
+      {
+        credentials: 'same-origin'
+      }
+    )
     .then(response => {
       if (response.ok) {
         return response;
@@ -57,6 +61,8 @@ class ReviewsContainer extends Component {
           rating={review.review_data.rating}
           body={review.review_data.body}
           created_at={review.review_data.created_at}
+          upvote_total={review.upvote_total}
+          downvote_total={review.downvote_total}
           handleDelete={handleDelete}
         />
       )
