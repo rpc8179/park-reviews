@@ -37,7 +37,6 @@ class ReviewsContainer extends Component {
 
     let reviews = this.state.reviews.map((review) => {
       return(
-        <div>
         <ReviewTile
           key={review.review_data.id}
           id={review.review_data.id}
@@ -48,7 +47,6 @@ class ReviewsContainer extends Component {
           upvote_total={review.upvote_total}
           downvote_total={review.downvote_total}
         />
-        </div>
       )
     })
 

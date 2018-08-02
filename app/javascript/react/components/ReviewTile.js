@@ -6,6 +6,7 @@ class ReviewTile extends React.Component {
     this.state = {
       upvote_total: this.props.upvote_total,
       downvote_total: this.props.downvote_total,
+      errors: []
     }
     this.handleVoteClick = this.handleVoteClick.bind(this)
     this.handleUpvoteClick = this.handleUpvoteClick.bind(this)
@@ -35,7 +36,11 @@ class ReviewTile extends React.Component {
     })
     .then(response => response.json())
     .then(response => {
-      this.setState(response)
+      if (response.errors.length != 0) {
+        this.setState({errors: response.errors})
+      } else {
+        this.setState(response)
+      }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -70,8 +75,9 @@ class ReviewTile extends React.Component {
           >
             \/
           </button>
+          <div>{this.state.errors}</div>
         </div>
-        <a href={`/reviews/${props.id}/edit`}> Edit Review </a>
+        <a href={`/reviews/${this.props.id}/edit`}> Edit Review </a>
       </div>
     )
   }

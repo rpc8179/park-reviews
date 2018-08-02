@@ -1,3 +1,3 @@
 class ReviewUpvotes < ApplicationController
-  
+
 end
