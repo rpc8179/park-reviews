@@ -1,12 +1,14 @@
-<h1 class="c"> Parks </h1>
+<h1 class="park-title"> Parks </h1>
 <ul>
+  <button className="button park-button"><%= link_to 'Add a New Park!', new_park_path, class: 'park-button'%> </button><br>
   <% @parks.each do |park| %>
-    <li>
+    <li class="park-form-container">
       <%= link_to park.name, park_path(park)  %> <br>
       <%= park.city %> <br>
       <%= park.state %> <br>
-      <button className="button"><%= link_to "Edit Park", edit_park_path(park.id) %> <br> </button>
-      <button className="button"><%= link_to "Delete Park", park_path(park.id), method: :delete, data: { confirm: "Are you sure?  This will delete all the associated reviews too!" } %></button> <br> <br>
+      <button className="button park-button"><%= link_to "Edit", edit_park_path(park.id), class: 'park-button'%></button>
+      <button className="button park-button"><%= link_to "Delete", park_path(park.id), method:
+          :delete, data: { confirm: "Are you sure?  This will delete all the associated reviews too!" }, class: 'park-button'%></button>
     </li>
   <% end %>
 </ul>

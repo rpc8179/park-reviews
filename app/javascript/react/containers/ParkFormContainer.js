@@ -101,7 +101,7 @@ class ParkFormContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div className='park-form-page'>
         <h1>Add A New Park!</h1>
         {this.state.errors}
         {this.state.successStatus}
@@ -137,14 +137,9 @@ class ParkFormContainer extends Component {
             <input type='text' className='parkDescription' onChange = {this.handleDescriptionChange}/>
           </div>
 
-          <div className='row'>
+          <div className='row park-buttons'>
             <button className="button" onClick={this.handleFormClear}>Clear Form</button>
-          </div>
-
-          <div>
-            <div className='row'>
-              <button className="button" onClick={this.handleFormSubmit}>Submit Park</button>
-            </div>
+            <button className="button" onClick={this.handleFormSubmit}>Submit Park</button>
           </div>
         </form>
       </div>

@@ -124,7 +124,7 @@ class ParkFormEditContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div className="park-form-page">
         <h1>Edit Your Park</h1>
         {this.state.errors}
         {this.state.works}
@@ -161,7 +161,7 @@ class ParkFormEditContainer extends Component {
           </div>
 
           <div>
-            <div className='row'>
+            <div className='row park-buttons'>
               <button className="button">Update Park</button>
             </div>
           </div>
