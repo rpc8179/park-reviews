@@ -39,7 +39,7 @@ class ReviewsContainer extends Component {
   render() {
 
     let reviews = this.state.reviews.map((review) => {
-      console.log(review)
+
       return(
         <div>
           <ReviewTile
