@@ -37,9 +37,11 @@ class ReviewsContainer extends Component {
   }
 
   render() {
+
     let reviews = this.state.reviews.map((review) => {
         console.log(review)
       return(
+        <div>
         <ReviewTile
           key={review.review_data.id}
           id={review.review_data.id}
@@ -50,6 +52,7 @@ class ReviewsContainer extends Component {
           created_at={review.review_data.created_at}
           current_user={this.state.current_user}
         />
+        </div>
       )
     })
 
