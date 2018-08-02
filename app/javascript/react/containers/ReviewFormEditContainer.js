@@ -66,46 +66,41 @@ class ReviewFormEditContainer extends Component {
 
 
   componentDidMount() {
-     debugger;
     fetch(`/api/v1/reviews/${this.state.review_id}`)
     .then(response => {
-        if(response.ok) {
-            return response;
-        } else {
-            let errorMessage = `${response.status} (${response.statusText})`,
-                error = new Error(errorMessage);
-            throw(error);
-        }
+      if(response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw(error);
+      }
     })
     .then(response => response.json())
     .then(body => {
-      debugger;
-      console.log(body)
-        this.setState({
-          body: body.review.body,
-          rating: body.review.rating
-          // errors: body.review.errors
-        })
+      this.setState({
+        body: body.review.body,
+        rating: body.review.rating
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
   render() {
-    let errors = this.state.errors.map(error => {
-      if(error === "User must exist") {
-        error = "You need to be logged in to do this"
-      }
-      return(
-        <div key={error}>
-          {error}
-          <br />
-        </div>
-      )
-    })
+    // let errors = this.state.errors.map(error => {
+    //   if(error === "User must exist") {
+    //     error = "You need to be logged in to do this"
+    //   }
+    //   return(
+    //     <div key={error}>
+    //       {error}
+    //       <br />
+    //     </div>
+    //   )
+    // })
     return(
       <div>
-        {errors}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleUpdate}>
           <TextField
             label='body'
             name='body'
@@ -121,7 +116,6 @@ class ReviewFormEditContainer extends Component {
           <div className="button-group">
             <button className="button" onClick={this.handleClear}>Clear</button>
             <input className="button" type="submit" value="Update" />
-
           </div>
         </form>
       </div>

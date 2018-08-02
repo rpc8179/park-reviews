@@ -7,6 +7,7 @@ class ReviewTile extends Component {
 
     }
     this.handleDelete = this.handleDelete.bind(this)
+
   }
 
     handleDelete() {
@@ -17,19 +18,22 @@ class ReviewTile extends Component {
        })
        .then(response => response.json())
        .then( response => {
+         console.log(response.user_data)
          return response;
        })
        .then(location.reload(true))
      }
 
-    componentDidMount() {
-    }
+
   render() {
     let deleteButton;
+    let editButton;
     if (this.props.current_user.id == this.props.user_id) {
+      editButton = <a className="button" href={`/reviews/${this.props.id}/edit`}> Edit Review </a>
       deleteButton = <input className="button" type="button" value="Delete" onClick = {this.handleDelete} />
     } else if (this.props.current_user.id == null || this.props.current_user.id != this.props.user_id) {
-      deleteButton = <div></div>
+      deleteButton = null
+      editButton = null
     }
 
 
@@ -39,7 +43,7 @@ class ReviewTile extends Component {
         {this.props.body}<br />
         {this.props.user}<br />
         {this.props.created_at}<br /> <br /> <br />
-        <a className="button" href={`/reviews/${this.props.id}/edit`}> Edit Review </a>
+        {editButton}
         {deleteButton}
       </div>
      )

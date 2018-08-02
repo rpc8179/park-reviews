@@ -27,6 +27,10 @@ class Api::V1::ReviewsController < ApplicationController
     binding.pry
   end
 
+  def show
+    render json: { review: Review.find(params[:id]) }
+  end
+
   def create
     review = Review.new(review_params)
     review.user = current_user
@@ -38,7 +42,6 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def edit
-    binding.pry
     render json: { review: Review.find(params[:id]), errors: ''  }
   end
 

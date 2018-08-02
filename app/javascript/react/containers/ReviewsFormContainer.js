@@ -55,9 +55,7 @@ class ReviewsFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger;
       if (body.errors.length === 0) {
-        debugger;
         browserHistory.push(`/parks/${id}`)
       } else {
         this.setState({ errors: body.errors})
