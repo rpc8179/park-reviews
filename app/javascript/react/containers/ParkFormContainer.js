@@ -91,12 +91,15 @@ class ParkFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({
-        newPark: body.park,
-        errors: body.error,
-        successStatus: body.successStatus
-      })
-      browserHistory.push(`/parks`)
+      if (body.errors) {
+        this.setState({
+          newPark: body.park,
+          errors: body.error,
+          successStatus: body.successStatus
+        })
+      } else {
+          browserHistory.push(`/parks`)
+      }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
