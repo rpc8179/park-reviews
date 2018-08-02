@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 
 class ParkFormContainer extends Component {
   constructor(props) {
@@ -95,6 +96,7 @@ class ParkFormContainer extends Component {
         errors: body.error,
         successStatus: body.successStatus
       })
+      browserHistory.push(`/parks`)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }

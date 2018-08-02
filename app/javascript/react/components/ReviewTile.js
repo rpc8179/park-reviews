@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 class ReviewTile extends React.Component {
   constructor(props) {
@@ -77,7 +77,8 @@ class ReviewTile extends React.Component {
           </button>
           <div>{this.state.errors}</div>
         </div>
-        <a href={`/reviews/${this.props.id}/edit`}> Edit Review </a>
+        <a className="button" href={`/reviews/${this.props.id}/edit`}> Edit Review </a>
+        <input className="button" type="button" value="Delete" onClick = {this.props.handleDelete} />
       </div>
     )
   }
