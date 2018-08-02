@@ -12,10 +12,6 @@ class ParksController < ApplicationController
     @park = Park.find(params[:id])
   end
 
-  def create
-    redirect_to parks_path(params.park_id)
-  end
-
   def update
 
   end
