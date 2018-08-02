@@ -39,19 +39,19 @@ class ReviewsContainer extends Component {
   render() {
 
     let reviews = this.state.reviews.map((review) => {
-        console.log(review)
+
       return(
         <div>
-        <ReviewTile
-          key={review.review_data.id}
-          id={review.review_data.id}
-          user={review.user_data}
-          user_id={review.review_data.user_id}
-          rating={review.review_data.rating}
-          body={review.review_data.body}
-          created_at={review.review_data.created_at}
-          current_user={this.state.current_user}
-        />
+          <ReviewTile
+            key={review.review_data.id}
+            id={review.review_data.id}
+            user={review.user_data}
+            user_id={review.review_data.user_id}
+            rating={review.review_data.rating}
+            body={review.review_data.body}
+            created_at={review.review_data.created_at}
+            current_user={this.state.current_user}
+          />
         </div>
       )
     })
