@@ -13,14 +13,15 @@ const App = (props) => {
     <div>
       <Router history={browserHistory}>
         <Route path='/'>
-          <Route path='/parks' />
-          <Route path='/parks/new' component={ParkFormContainer} />
-          <Route path='/parks/:id/edit' component={ParkFormEditContainer} />
-          <Route path='/parks/:id'>
-          <IndexRoute component={ParkContainer}/>
-          <Route path='/parks/:id/reviews/new' component={ReviewsFormContainer}/>
-          </Route>
-          <Route path='/reviews/:id/edit' component={ReviewFormEditContainer}/>
+            <Route path='/parks' />
+            <Route path='/parks/new' component={ParkFormContainer} />
+            <Route path='/parks/:id/edit' component={ParkFormEditContainer} />
+            <Route path='/parks/:id'>
+              <IndexRoute component={ParkContainer}/>
+              <Route path='/parks/:id/reviews/new' component={ReviewsFormContainer}/>
+            </Route>
+            <Route path='/reviews/:id/edit' component={ReviewFormEditContainer}/>
+
         </Route>
       </Router>
     </div>

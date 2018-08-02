@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const ReviewTile = (props) => {
-  return(
-    <div>
-      {props.rating} <br />
-      {props.body}<br />
-      {props.user}<br />
-      {props.created_at}<br /> <br /> <br />
-      <a href={`/reviews/${props.id}/edit`}> Edit Review </a>
-    </div>
-  )
+class ReviewTile extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+
+    }
+  }
+
+  render() {
+    return(
+      <div>
+        {this.props.rating} <br />
+        {this.props.body}<br />
+        {this.props.user}<br />
+        {this.props.created_at}<br /> <br /> <br />
+        <a className="button" href={`/reviews/${this.props.id}/edit`}> Edit Review </a>
+        <input className="button" type="button" value="Delete" onClick = {this.props.handleDelete} />
+      </div>
+     )
+
+  }
 }
 
 export default ReviewTile

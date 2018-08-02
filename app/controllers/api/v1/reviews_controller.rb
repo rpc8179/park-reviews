@@ -35,7 +35,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def edit
-    render json: { review: Review.find(params[:id]), errors: [] }
+    render json: { review: Review.find(params[:id]), errors: ''  }
   end
 
   def update
@@ -46,6 +46,19 @@ class Api::V1::ReviewsController < ApplicationController
     else
       render json: {errors: review.errors}, status: 422
     end
+  end
+
+  def destroy
+    review = Review.find(params[:id])
+
+    if review.destroy
+      reviews = review.park.reviews
+      render json: { reviews: reviews, errors: [] }
+    else
+      reviews = review.park.reviews
+      render json: { reviews: reviews, errors: review.errors}
+    end
+
   end
 
   private

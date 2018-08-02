@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 
 class ParkFormContainer extends Component {
   constructor(props) {
@@ -90,11 +91,15 @@ class ParkFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({
-        newPark: body.park,
-        errors: body.error,
-        successStatus: body.successStatus
-      })
+      if (body.errors) {
+        this.setState({
+          newPark: body.park,
+          errors: body.error,
+          successStatus: body.successStatus
+        })
+      } else {
+          browserHistory.push(`/parks`)
+      }
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }

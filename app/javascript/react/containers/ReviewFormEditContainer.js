@@ -3,7 +3,7 @@ import TextField from '../components/TextField'
 import RatingSelectField from '../components/RatingSelectField'
 import { browserHistory } from 'react-router'
 
-class ReviewsFormContainer extends Component {
+class ReviewFormEditContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -58,7 +58,6 @@ class ReviewsFormContainer extends Component {
         errors: response.errors,
         updatedReview: {rating: this.state.rating, body: this.state.body}
       })
-      browserHistory.push(`/parks`)
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
@@ -85,17 +84,6 @@ class ReviewsFormContainer extends Component {
   }
 
   render() {
-    // let errors = this.state.errors.map(error => {
-    //   if(error === "User must exist") {
-    //     error = "You need to be logged in to do this"
-    //   }
-    //   return(
-    //     <div key={error}>
-    //       {error}
-    //       <br />
-    //     </div>
-    //   )
-    // })
     return(
       <div>
         <form onSubmit={this.handleUpdate}>
@@ -105,17 +93,16 @@ class ReviewsFormContainer extends Component {
             value={this.state.body}
             handleChange={this.handleFieldChange}
           />
-
           <RatingSelectField
             label='rating'
             name='rating'
             value={this.state.rating}
             handleChange={this.handleFieldChange}
           />
-
           <div className="button-group">
             <button className="button" onClick={this.handleClear}>Clear</button>
             <input className="button" type="submit" value="Update" />
+
           </div>
         </form>
       </div>
@@ -123,4 +110,4 @@ class ReviewsFormContainer extends Component {
   }
 }
 
-export default ReviewsFormContainer
+export default ReviewFormEditContainer
