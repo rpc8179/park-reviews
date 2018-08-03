@@ -77,7 +77,7 @@ class ReviewsFormContainer extends Component {
       )
     })
     return(
-      <div>
+      <div className="review-form-new">
         {errors}
         <form onSubmit={this.handleSubmit}>
           <TextField
