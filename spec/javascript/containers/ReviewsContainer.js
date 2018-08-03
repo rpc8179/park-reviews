@@ -57,7 +57,7 @@ describe('ReviewsContainer', () => {
     })
     it('should contain a created_at', (done) => {
       setTimeout(() => {
-        expect(wrapper.text()).toMatch(review.created_at)
+        expect(wrapper.text()).toMatch(new Date(review.created_at).toDateString())
         done()
       }, 0)
     })
