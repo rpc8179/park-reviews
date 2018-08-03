@@ -1,0 +1,17 @@
+.review-form-new {
+  background-color: rgba(240, 240, 201, 0.85);
+  margin: 2%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 50%
+}
+
+.review-form-new .button-group input {
+  border-radius: 20px;
+  background-color: #845131;
+}
+
+.review-form-new .button-group button {
+  border-radius: 20px;
+  background-color: #845131;
+}

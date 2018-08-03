@@ -1,6 +1,31 @@
-.park-page-title {
-  background-color: #89B595;
-  color: #256937;
+.park-index {
+  border-width: 3px;
+  border-color: green;
+  border-style: solid;
+  margin: 10px;
+  padding: 20px;
+  padding-bottom: 0px;
+  margin-right: 35%;
+  background-color: rgba(240, 240, 201, 0.85);
+}
+
+.park-button {
+  padding: 50px;
+}
+
+.index-title {
+  font-family: Trebuchet, monospace;
+  text-align: center;
+  color: #3E804F;
+  border-width: 3px;
+  border-color: green;
+  border-style: solid;
+  margin: 10px;
+  padding: 20px;
+  padding-bottom: 20px;
+  margin-right: 34.7%;
+  margin-left: 1.5%;
+  background-color: rgba(240, 240, 201, 0.85);
 }
 
 .parks-list {
@@ -8,7 +33,7 @@
 }
 
 .park-tile {
-  background-color: #FFF0DF;
+  background-color: rgba(240, 240, 201, 0.85);
   margin-right: 1em;
 }
 
@@ -23,4 +48,16 @@
 
 .park-location {
   font-size: .7em;
+}
+
+.park-index h4 {
+font-family: Trebuchet, monospace;
+color: #8F5C38;
+}
+
+.review-tile input {
+  background-color: #845131;
+}
+.review-tile a {
+  background-color: #845131;
 }

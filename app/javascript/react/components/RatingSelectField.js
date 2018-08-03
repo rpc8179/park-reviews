@@ -4,6 +4,7 @@ const RatingSelectField = props => {
   return(
     <div>
       <label>
+        Rating
         <select name={props.name} value={props.value} onChange={props.handleChange}>
           <option></option>
           <option value="0">0</option>

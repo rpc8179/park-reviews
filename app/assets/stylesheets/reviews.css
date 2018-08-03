@@ -1,0 +1,9 @@
+.review-tile {
+  border-width: 0px;
+  margin: 5%;
+  padding: 20px;
+  padding-bottom: 0px;
+  margin-right: 55%;
+  background-color: rgba(240, 240, 201, 0.85);
+  font-size: 1.5em
+}

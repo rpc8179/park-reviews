@@ -56,6 +56,8 @@ class ReviewsContainer extends Component {
       let handleDelete = () => {
         this.handleDeleteReview(review.review_data.id)
       }
+      var date = new Date(review.review_data.created_at).toDateString();
+
       return(
         <ReviewTile
           key={review.review_data.id}
@@ -63,7 +65,7 @@ class ReviewsContainer extends Component {
           user={review.user_data}
           rating={review.review_data.rating}
           body={review.review_data.body}
-          created_at={review.review_data.created_at}
+          created_at={date}
           upvote_total={review.upvote_total}
           downvote_total={review.downvote_total}
           handleDelete={handleDelete}

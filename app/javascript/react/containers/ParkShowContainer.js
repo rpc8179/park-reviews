@@ -40,14 +40,12 @@ class ParkShowContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div className='park-show-tile'>
         <div>
-          {this.state.park.name}<br />
+          <h2 className="park-title">{this.state.park.name}</h2>
           {this.state.park.address}<br />
-          {this.state.park.city}<br />
-          {this.state.park.state}<br />
-          {this.state.park.zip}<br />
-          {this.state.park.description}<br />
+          {this.state.park.city}, {this.state.park.state}, {this.state.park.zip} <br />
+          Description: {this.state.park.description}<br />
         </div>
         <div>
           <a href={`/parks/${this.props.params.id}/reviews/new`}>Add a review!</a>

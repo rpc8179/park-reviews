@@ -1,0 +1,15 @@
+div.sign-up-form {
+  background-color: rgba(240, 240, 201, 0.85);
+  margin: 2%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 30%
+}
+
+h2.sign-up-title {
+  background-color: rgba(240, 240, 201, 0.85);
+  margin: 2%;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 30%
+}
