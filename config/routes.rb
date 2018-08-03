@@ -10,11 +10,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :parks, except: [:destroy] do
-        resources :reviews, except: [:destroy]
+        resources :reviews
       end
       resources :reviews
+      resources :review_upvotes, only: [:create, :edit]
     end
   end
-
-
 end

@@ -49,6 +49,9 @@ class ParkShowContainer extends Component {
           {this.state.park.zip}<br />
           {this.state.park.description}<br />
         </div>
+        <div>
+          <a href={`/parks/${this.props.params.id}/reviews/new`}>Add a review!</a>
+        </div>
       </div>
     )
   }

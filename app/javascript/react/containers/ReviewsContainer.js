@@ -1,16 +1,36 @@
 import React, { Component } from 'react'
 import ReviewTile from '../components/ReviewTile'
+import { browserHistory } from 'react-router'
 
 class ReviewsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      errors: []
     }
+    this.handleDeleteReview = this.handleDeleteReview.bind(this)
   }
-
+  handleDeleteReview(reviewId) {
+    fetch(`/api/v1/reviews/${reviewId}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json'}
+     })
+     .then(response => response.json())
+     .then( response => {
+       this.setState({
+         errors: response.errors,
+         reviews: response.reviews
+       })
+     })
+   }
   componentDidMount() {
-    fetch(`/api/v1/parks/${this.props.park_id}/reviews`)
+    fetch(`/api/v1/parks/${this.props.park_id}/reviews`,
+      {
+        credentials: 'same-origin'
+      }
+    )
     .then(response => {
       if (response.ok) {
         return response;
@@ -23,17 +43,20 @@ class ReviewsContainer extends Component {
     .then(response => response.json())
     .then(response => {
       this.setState({
-        reviews: response.formatted_reviews
+        reviews: response.formatted_reviews,
+        current_user: response.formatted_user,
+
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-
   render() {
-
+    let current_user = this.state.current_user
     let reviews = this.state.reviews.map((review) => {
+      let handleDelete = () => {
+        this.handleDeleteReview(review.review_data.id)
+      }
       return(
-        <div>
         <ReviewTile
           key={review.review_data.id}
           id={review.review_data.id}
@@ -41,8 +64,12 @@ class ReviewsContainer extends Component {
           rating={review.review_data.rating}
           body={review.review_data.body}
           created_at={review.review_data.created_at}
+          upvote_total={review.upvote_total}
+          downvote_total={review.downvote_total}
+          handleDelete={handleDelete}
+          current_user={current_user}
+          user_id={review.review_data.user_id}
         />
-        </div>
       )
     })
 
