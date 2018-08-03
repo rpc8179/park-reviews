@@ -71,9 +71,9 @@ class ReviewTile extends React.Component {
     }
     return(
       <div className='review-tile'>
-        {this.props.rating} <br />
+        Rating: {this.props.rating}/5 <br />
         {this.props.body}<br />
-        {this.props.user}<br />
+        User: {this.props.user}<br />
         {this.props.created_at}<br />
         {deleteButton}
         {editButton}

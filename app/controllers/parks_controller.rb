@@ -1,6 +1,6 @@
 class ParksController < ApplicationController
-  before_action :authorize_user, except: [:index, :show]
-  before_action :authorize_admin, except: [:index, :show, :edit, :new, :create]
+  before_action :authorize_user, except: [:index, :show, :new, :edit, :create]
+  before_action :authorize_admin, except: [:index, :show, :edit, :new, :create, :destroy]
   def index
     @parks = Park.all
   end

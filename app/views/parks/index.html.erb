@@ -1,14 +1,13 @@
-<h1 class="park-title"> Parks </h1>
+<h1 class="index-title"> Parks </h1>
 <ul>
   <% if user_signed_in? %>
     <button className="button park-button"><%= link_to 'Add a New Park!', new_park_path, class: 'park-button'%> </button><br>
   <% end %>
   <% @parks.each do |park| %>
-    <li class="park-form-container">
-      <%= link_to park.name, park_path(park)  %> <br>
-      <%= park.city %> <br>
-      <%= park.state %> <br>
-    <% if user_signed_in? %>
+    <li class="park-index">
+      <h2><%= link_to park.name, park_path(park)  %> </h2>
+      <h4><%= park.city %>, <%= park.state %> </h4>
+    <% if user_signed_in? && !current_user.admin? %>
       <button className="button park-button"><%= link_to "Edit", edit_park_path(park.id), class: 'park-button'%></button>
     <% elsif user_signed_in? && current_user.admin? %>
       <button className="button park-button"><%= link_to "Edit", edit_park_path(park.id), class: 'park-button'%></button>
