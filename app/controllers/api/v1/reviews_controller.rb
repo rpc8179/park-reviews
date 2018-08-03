@@ -26,11 +26,11 @@ class Api::V1::ReviewsController < ApplicationController
       )
     end
 
-    render json: { formatted_reviews: formatted_reviews }
+    render json: { formatted_reviews: formatted_reviews, formatted_user: current_user }
   end
 
   def show
-    render json: { review: Review.find(params[:id]) }
+    render json: { review: Review.find(params[:id]), formatted_user: current_user }
   end
 
   def create

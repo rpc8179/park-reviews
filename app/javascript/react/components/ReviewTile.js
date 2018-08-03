@@ -54,12 +54,29 @@ class ReviewTile extends React.Component {
   }
 
   render() {
+    let deleteButton;
+    let editButton;
+    let current_user
+    if (this.props.current_user == null) {
+      current_user = {id: null}
+    } else {
+      current_user = this.props.current_user
+    }
+    if (current_user.id == this.props.user_id) {
+      editButton = <a className="button" href={`/reviews/${this.props.id}/edit`}> Edit Review </a>
+      deleteButton = <input className="button" type="button" value="Delete" onClick = {this.handleDelete} />
+    } else if (current_user.id == null || current_user.id != this.props.user_id) {
+      deleteButton = null
+      editButton = null
+    }
     return(
       <div className='review-tile'>
         {this.props.rating} <br />
         {this.props.body}<br />
         {this.props.user}<br />
         {this.props.created_at}<br />
+        {deleteButton}
+        {editButton}
         <div className='votes-area'>
           Upvotes: {this.state.upvote_total}
           <button
@@ -77,8 +94,6 @@ class ReviewTile extends React.Component {
           </button>
           <div>{this.state.errors}</div>
         </div>
-        <a className="button" href={`/reviews/${this.props.id}/edit`}> Edit Review </a>
-        <input className="button" type="button" value="Delete" onClick = {this.props.handleDelete} />
       </div>
     )
   }

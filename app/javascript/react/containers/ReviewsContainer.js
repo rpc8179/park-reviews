@@ -43,12 +43,15 @@ class ReviewsContainer extends Component {
     .then(response => response.json())
     .then(response => {
       this.setState({
-        reviews: response.formatted_reviews
+        reviews: response.formatted_reviews,
+        current_user: response.formatted_user,
+
       })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
   render() {
+    let current_user = this.state.current_user
     let reviews = this.state.reviews.map((review) => {
       let handleDelete = () => {
         this.handleDeleteReview(review.review_data.id)
@@ -64,6 +67,8 @@ class ReviewsContainer extends Component {
           upvote_total={review.upvote_total}
           downvote_total={review.downvote_total}
           handleDelete={handleDelete}
+          current_user={current_user}
+          user_id={review.review_data.user_id}
         />
       )
     })
