@@ -44,7 +44,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       expect(response.status).to eq 200
       expect(response.content_type).to eq('application/json')
 
-      expect(returned_json.length).to eq 1
+      expect(returned_json.length).to eq 2
       expect(returned_json["formatted_reviews"][0]["review_data"]["user_id"]).to eq first_user.id
       expect(returned_json["formatted_reviews"][0]["review_data"]["park_id"]).to eq first_park.id
       expect(returned_json["formatted_reviews"][0]["review_data"]["rating"]).to eq first_review.rating
