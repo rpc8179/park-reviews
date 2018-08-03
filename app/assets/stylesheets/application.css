@@ -35,7 +35,8 @@
    background-repeat: no-repeat;
    background-attachment: fixed;
    background-size: cover;
-   font-family: Trebuchet;
+   font-family: Trebuchet, monospace;
+   color: #8F5C38;
  }
 
  button, .button{

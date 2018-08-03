@@ -1,0 +1,21 @@
+.park-show-tile {
+  background-color: rgba(240, 240, 201, 0.7);
+  margin: 5%;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.park-review-tile {
+  background-color: rgba(240, 240, 201, 0.7);
+  margin: 5%;
+  border-radius: 5px;
+  padding: 20px;
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+
+.park-title {
+  font-family: Trebuchet, monospace;
+  color: rgba(143, 92, 56, 1.0);
+}

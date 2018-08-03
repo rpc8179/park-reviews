@@ -40,9 +40,9 @@ class ParkShowContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div className='park-show-tile'>
         <div>
-          {this.state.park.name}<br />
+          <h2 className="park-title">{this.state.park.name}</h2><br />
           {this.state.park.address}<br />
           {this.state.park.city}<br />
           {this.state.park.state}<br />
