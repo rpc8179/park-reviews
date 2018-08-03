@@ -1,12 +1,21 @@
 <h1 class="c"> Parks </h1>
 <ul>
+  <% if user_signed_in? %>
+    <button className="button" ><%= link_to "Create Park!", new_park_path %></button>
+  <% end %>
   <% @parks.each do |park| %>
     <li>
       <%= link_to park.name, park_path(park)  %> <br>
       <%= park.city %> <br>
       <%= park.state %> <br>
-      <button className="button"><%= link_to "Edit Park", edit_park_path(park.id) %> <br> </button>
-      <button className="button"><%= link_to "Delete Park", park_path(park.id), method: :delete, data: { confirm: "Are you sure?  This will delete all the associated reviews too!" } %></button> <br> <br>
+
+
+      <% if user_signed_in? %>
+          <button className="button"><%= link_to "Edit Park", edit_park_path(park.id) %> <br> </button>
+      <% elsif user_signed_in? && current_user.admin? %>
+          <button className="button"><%= link_to "Edit Park", edit_park_path(park.id) %> <br> </button>
+          <button className="button"><%= link_to "Delete Park", park_path(park.id), method: :delete, data: { confirm: "Are you sure?  This will delete all the associated reviews too!" } %></button> <br>
+      <% end %>
     </li>
   <% end %>
 </ul>
