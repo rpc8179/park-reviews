@@ -1,5 +1,6 @@
 class Api::V1::ReviewsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
+
   def index
     reviews = Park.find(params[:park_id]).reviews
 
@@ -26,11 +27,11 @@ class Api::V1::ReviewsController < ApplicationController
       )
     end
 
-    render json: { formatted_reviews: formatted_reviews }
+    render json: { formatted_reviews: formatted_reviews, formatted_user: current_user }
   end
 
   def show
-    render json: { review: Review.find(params[:id]) }
+    render json: { review: Review.find(params[:id]), formatted_user: current_user }
   end
 
   def create
@@ -74,5 +75,12 @@ class Api::V1::ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:park_id, :rating, :body)
+  end
+
+  def authorize_admin
+    if !current_user.admin?
+      flash[:notice] = "You Do not have access to this page"
+      redirect_to parks_path
+    end
   end
 end
