@@ -85,7 +85,7 @@ class ReviewFormEditContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div className="review-edit-form">
         <form onSubmit={this.handleUpdate}>
           <TextField
             label='body'

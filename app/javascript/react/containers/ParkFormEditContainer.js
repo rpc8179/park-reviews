@@ -40,39 +40,39 @@ class ParkFormEditContainer extends Component {
   handleStateChange(event) {
     this.setState({parkState: event.target.value})
   }
-    handleFormUpdate(event) {
-        event.preventDefault();
-        let formPayload = {
-            name: this.state.parkName,
-            address: this.state.parkAddress,
-            city: this.state.parkCity,
-            state: this.state.parkState,
-            zip: this.state.parkZip,
-            description: this.state.parkDescription};
-        fetch(`/api/v1/parks/${this.props.params.id}`, {
-            credentials: 'same-origin',
-            method: 'PATCH',
-            body: JSON.stringify(formPayload),
-            headers: { 'Content-Type': 'application/json'}
-        })
-        .then(response => {
-            if(response.ok) {
-                return response;
-            } else {
-                let errorMessage = `${response.status} (${response.statusText})`,
-                    error = new Error(errorMessage);
-                throw(error);
-            }
-        })
-        .then(response => response.json())
-        .then(body => {
-            this.setState({ park: body.park, error: body.errors })
-            if (body.park !== {}) {
-              browserHistory.push(`/parks/${this.props.params.id}`)
-            }
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`))
-    }
+  handleFormUpdate(event) {
+    event.preventDefault();
+    let formPayload = {
+        name: this.state.parkName,
+        address: this.state.parkAddress,
+        city: this.state.parkCity,
+        state: this.state.parkState,
+        zip: this.state.parkZip,
+        description: this.state.parkDescription};
+    fetch(`/api/v1/parks/${this.props.params.id}`, {
+        credentials: 'same-origin',
+        method: 'PATCH',
+        body: JSON.stringify(formPayload),
+        headers: { 'Content-Type': 'application/json'}
+    })
+    .then(response => {
+        if(response.ok) {
+            return response;
+        } else {
+            let errorMessage = `${response.status} (${response.statusText})`,
+                error = new Error(errorMessage);
+            throw(error);
+        }
+    })
+    .then(response => response.json())
+    .then(body => {
+        this.setState({ park: body.park, error: body.errors })
+        if (body.park !== {}) {
+          browserHistory.push(`/parks/${this.props.params.id}`)
+        }
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`))
+  }
 
   handleZipChange(event) {
     this.setState({parkZip: event.target.value})
