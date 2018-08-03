@@ -50,7 +50,14 @@
   font-size: .7em;
 }
 
- .park-index h4 {
-  font-family: Trebuchet, monospace;
-  color: #8F5C38;
- }
+.park-index h4 {
+font-family: Trebuchet, monospace;
+color: #8F5C38;
+}
+
+.review-tile input {
+  background-color: #845131;
+}
+.review-tile a {
+  background-color: #845131;
+}
